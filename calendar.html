@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="bg-BG">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Православен календар</title>
+    <link
+      rel="shortcut icon"
+      href="/site/static/files-static/images/icon_tab.ico"
+    />
+    <link rel="stylesheet" href="/site/calendar/css/style.css" />
+    <link rel="stylesheet" href="/site/calendar/css/btns.css" />
+  </head>
+
+  <body>
+    <!-- Page ASIDE -->
+    <aside>
+      <!-- To-top Button -->
+      <div class="btn-to-top" id="btn-to-top">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+            <rect width="256" height="256" fill="none" />
+            <polyline
+              points="48 160 128 80 208 160"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="16"
+            />
+          </svg>
+        </div>
+      </div>
+    </aside>
+
+    <header>
+      <h1 id="page-start">Православен календар</h1>
+      <h2 id="year-heading"></h2>
+
+      <form>
+        <div class="input-row">
+          <label for="year-selection">Година: </label>
+          <select name="year-selection" id="year-selection">
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+            <option value="2021">2021</option>
+            <option value="2020">2020</option>
+            <option value="2019">2019</option>
+            <option value="2018">2018</option>
+            <option value="2017">2017</option>
+            <option value="2016">2016</option>
+            <option value="2015">2015</option>
+            <option value="2014">2014</option>
+            <option value="2013">2013</option>
+            <option value="2012">2012</option>
+            <option value="2011">2011</option>
+            <option value="2010">2010</option>
+            <option value="2009">2009</option>
+          </select>
+        </div>
+
+        <div class="input-row">
+          <label for="month-selection">Месец: </label>
+          <select name="month-selection" id="month-selection">
+            <option value="Jan">ЯНУАРИ</option>
+            <option value="Feb">ФЕВРУАРИ</option>
+            <option value="Mar">МАРТ</option>
+            <option value="Apr">АПРИЛ</option>
+            <option value="May">МАЙ</option>
+            <option value="Jun">ЮНИ</option>
+            <option value="Jul">ЮЛИ</option>
+            <option value="Aug">АВГУСТ</option>
+            <option value="Sep">СЕПТЕМВРИ</option>
+            <option value="Oct">ОКТОМВРИ</option>
+            <option value="Nov">НОЕМВРИ</option>
+            <option value="Dec">ДЕКЕМВРИ</option>
+          </select>
+        </div>
+
+        <!-- New section -->
+        <div class="input-row">
+          <label for="full-year-checkbox">Цялата година:</label>
+          <input type="checkbox" name="full-year-checkbox" id="full-year-checkbox">
+        </div>
+        
+
+        <button class="btn" id="select-calendar-btn" type="button">
+          Покажи
+        </button>
+      </form>
+
+      <h3 id="month-heading"></h3>
+    </header>
+
+    <main></main>
+
+    <footer>
+      Източник:
+      <a href="https://bg-patriarshia.bg/calendar"
+        >Българска Патриаршия: Българска Православна Църква</a
+      >
+    </footer>
+
+    <script type="module" src="/site/calendar/js/script.js"></script>
+  </body>
+</html>
