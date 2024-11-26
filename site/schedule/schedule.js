@@ -121,7 +121,8 @@ async function getRequest() {
     // const url = 'http://localhost:3030/jsonstore/schedule/storage';
 
     // Back4App server
-    const url = 'https://parseapi.back4app.com/classes/Schedule/ujMZdzqmbL';
+    // const url = 'https://parseapi.back4app.com/classes/Schedule/ujMZdzqmbL';
+    const url = 'https://parseapi.back4app.com/classes/ScheduleArr/yrfW7lPqTn';
 
     const data = await makeRequest(url, 'get');
     return data;

@@ -1,6 +1,7 @@
 // Back4App server
 const back4AppInfo = {
-    url_1: 'https://parseapi.back4app.com/classes/Schedule/ujMZdzqmbL',
+    // url_1: 'https://parseapi.back4app.com/classes/Schedule/ujMZdzqmbL',
+    url_1: 'https://parseapi.back4app.com/classes/ScheduleArr/yrfW7lPqTn',
     url_2: 'https://parseapi.back4app.com/classes/Notices/Eah1g4UkkD',
     headers: {
         'X-Parse-Application-Id': 'wlZezVWuR0xG3VDM2SPqvEuSPE66bKspj5iKigGL',

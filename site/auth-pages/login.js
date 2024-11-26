@@ -67,7 +67,8 @@ function onLogout() {
 
 function onRestart() {
     const urlNotices = 'https://parseapi.back4app.com/classes/Notices/Eah1g4UkkD';
-    const urlSchedule = 'https://parseapi.back4app.com/classes/Schedule/ujMZdzqmbL';
+    // const urlSchedule = 'https://parseapi.back4app.com/classes/Schedule/ujMZdzqmbL';
+    const urlSchedule = 'https://parseapi.back4app.com/classes/ScheduleArr/yrfW7lPqTn';
 
     const requestBodyObjNotices = {
         "NoticesArr": [
