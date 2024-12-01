@@ -73,6 +73,11 @@ const linksTemplate = () => html`
                         Богоявление
                     </a>
                 </li>
+                <li>
+                    <a href="https://www.youtube.com/watch?v=cANTqrJ75q0&list=PLLZXTBZUCHTcn-RF-XbcWxMuh-zVtKbFx" target="_blank">
+                        Седмица на православната книга
+                    </a>
+                </li>
             </ul>
         </section>
 
@@ -109,16 +114,25 @@ const linksTemplate = () => html`
 
         <ul>
             <li>
-                <a href="https://bnt.bg/bg/a/domt-na-vyarata" target="_blank">
-                    Домът на вярата (документална поредица на БНТ)
+                <a href="https://www.youtube.com/playlist?list=PLzDt0vRS18rBZkiHx1SZa5NsnKGy3A3K6" target="_blank">
+                    Път към Голгота (документална поредица на БНТ - архив)
                 </a>
             </li>
             <li>
-            <a href="https://www.youtube.com/playlist?list=PLzDt0vRS18rBZkiHx1SZa5NsnKGy3A3K6" target="_blank">
-                Път към Голгота (документална поредица на БНТ - архив)
-            </a>
-        </li>
-
+                <a href="https://bnt.bg/bg/a/domt-na-vyarata" target="_blank">
+                    Домът на вярата (БНТ)
+                </a>
+            </li>
+            <li>
+                <a href="https://bnt.bg/news/religiyata-dnes-283938news.html" target="_blank">
+                    Религията днес (БНТ)
+                </a>
+            </li>
+            <li>
+                <a href="https://play.nova.bg/tvshow/ikonostas/52" target="_blank">
+                    Иконостас (Нова телевизия)
+                </a>
+            </li>
         </ul>
 
     </article>
