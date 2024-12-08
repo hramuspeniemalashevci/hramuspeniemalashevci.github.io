@@ -50,7 +50,7 @@ const homeTemplate = () => html`
             <p>
                 Градски транспорт:
                 <ul>
-                    <li>- трамваи №18, №4 (спирка&nbsp;0797 – „Католически гробищен парк“)</li>
+                    <li>- трамваи №18, №4, №3 (спирка&nbsp;0797 – „Католически гробищен парк“)</li>
                     <li>- автобуси №100, №22, №21, №20</li>
                 </ul>
                 * <a href="https://www.sofiatraffic.bg/bg/" target="_blank"><i>https://www.sofiatraffic.bg/bg/</i></a><br>
