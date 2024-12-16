@@ -3,9 +3,9 @@ import * as api from './api-youtube.js';
 const channelId = 'UCS3ImmFAklu-KGOi7-Yn5EQ';
 const maxResults = 5;
 const query = '%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7Cmp4';
-const apiKey = 'AIzaSyCxzNhFqbAE650eUXWo1k-W9pe4WnVzgIY';
+const a = 'AIzaSyCxzNhFqbAE650eUXWo1k-W9pe4WnVzgIY';
 
-const search = `/search?part=snippet&channelId=${channelId}&maxResults=${maxResults}&order=date&q=${query}&type=video&key=${apiKey}&pageToken=`;
+const search = `/search?part=snippet&channelId=${channelId}&maxResults=${maxResults}&order=date&q=${query}&type=video&key=${a}&pageToken=`;
 // ex. Query string: 'search?part=snippet&channelId=UCS3ImmFAklu-KGOi7-Yn5EQ&maxResults=100&order=date&q=%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7Cmp4&type=video&key=AIzaSyCxzNhFqbAE650eUXWo1k-W9pe4WnVzgIY&pageToken='
 
 let nextPageToken = '';
