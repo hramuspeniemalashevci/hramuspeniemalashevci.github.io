@@ -36,6 +36,9 @@ const linksTemplate = () => html`
                 <i><a href="/site/static/files-static/downloads/Постен-календар-2025.png" target="_blank">.png</a></i>
                 &nbsp;)
             </li>
+            <li>
+            <a href="http://apostolite.com/category/%d0%bf%d0%be%d1%81%d1%82%d0%b5%d0%bd-%d0%ba%d0%b0%d0%bb%d0%b5%d0%bd%d0%b4%d0%b0%d1%80/" target="_blank">Постен календар (архив)</a>
+            </li>
         </ul>
     </article>
 
