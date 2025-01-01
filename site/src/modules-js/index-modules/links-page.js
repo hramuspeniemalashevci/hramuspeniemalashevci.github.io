@@ -25,15 +25,15 @@ const linksTemplate = () => html`
             <a href="https://pravoslaven-calendar.github.io" target="_blank">Църковен календар (в GitHub)</a>
             </li>
             <li>
-                <a href="http://apostolite.com/%D0%BF%D0%BE%D1%81%D1%82%D0%B5%D0%BD-%D0%BA%D0%B0%D0%BB%D0%B5%D0%BD%D0%B4%D0%B0%D1%80-2024-%D0%B3/"
+                <a href="http://apostolite.com/%d0%bf%d0%be%d1%81%d1%82%d0%b5%d0%bd-%d0%ba%d0%b0%d0%bb%d0%b5%d0%bd%d0%b4%d0%b0%d1%80-2025%d0%b3/"
                     target="_blank">
-                    Постен календар за 2024 г.
+                    Постен календар за 2025 г.
                 </a>
                 <br />
                 (&nbsp;Преглед/Изтегляне:
-                <i><a href="/site/static/files-static/downloads/Постен-календар-2024-формат-А4.pdf" target="_blank">.pdf</a></i>
+                <i><a href="/site/static/files-static/downloads/Постен-календар-2025-формат-А4.pdf" target="_blank">.pdf</a></i>
                 &nbsp;/
-                <i><a href="/site/static/files-static/downloads/Постен-календар-2024.png" target="_blank">.png</a></i>
+                <i><a href="/site/static/files-static/downloads/Постен-календар-2025.png" target="_blank">.png</a></i>
                 &nbsp;)
             </li>
         </ul>
