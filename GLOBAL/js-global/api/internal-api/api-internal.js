@@ -1,5 +1,5 @@
 const endpoints = {
-    prophets: '/global/assets/data-static/data-prophet.json',
+    prophets: '/GLOBAL/assets/data-static/data-prophet.json',
 };
 
 
