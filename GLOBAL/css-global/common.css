@@ -54,7 +54,7 @@ ul {
     border: 2px solid black;
     border-radius: 8px;
     padding: 8px;
-    font-weight: Regular;
+    /* font-weight: Regular; */
 }
 
 article {
