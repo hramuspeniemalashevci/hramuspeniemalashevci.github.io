@@ -1,0 +1,187 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+@font-face {
+  font-family: 'BukyVedeRegular';
+  src: url(../fonts/BukyVede-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url(../fonts/Montserrat-Regular.ttf);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  padding: 20px;
+}
+
+h1,
+#year-heading {
+  font-family: 'BukyVedeRegular', Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  text-align: center;
+  margin: 0;
+}
+
+#year-heading,
+form,
+#month-heading {
+  margin-bottom: 20px;
+}
+
+#month-heading {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+form {
+  padding: 0 4px;
+}
+
+form,
+select,
+option,
+.btn {
+  font-size: 90%;
+}
+
+.input-row {
+  display: inline-block;
+}
+
+div.input-row:nth-child(2) {
+  margin-left: 4px;
+}
+
+label,
+select {
+  margin: 4px 0;
+}
+
+/* General CSS [Start] */
+button {
+  cursor: pointer;
+}
+
+button > * {
+  pointer-events: none;
+}
+/* General CSS [End] */
+
+.btn {
+  margin: 4px;
+}
+
+#year-selection,
+#month-selection {
+  border-radius: 4px;
+  padding: 8px;
+  background-color: rgb(190, 212, 190);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#select-calendar-btn {
+  border: 2px solid rgb(80, 140, 80);
+  border-radius: 8px;
+  padding: 8px 18px;
+  background-color: rgb(80, 140, 80);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#select-calendar-btn:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+.card {
+  margin: 5px;
+  padding: 5px;
+}
+
+.title {
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  margin-bottom: 4px;
+}
+
+.hr-divider {
+  margin: 40px;
+}
+
+#current-day {
+  border: 4px double rgb(125, 117, 238);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.red {
+  color: rgb(218, 67, 67);
+  font-weight: bold;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(74, 105, 204);
+  display: inline-block;
+  font-weight: bold;
+}
+
+a:hover,
+a:active {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+/* ##### Queries ##### */
+@media (max-width: 1120px) {
+  form {
+    text-align: center;
+  }
+}
+
+@media (max-width: 450px) {
+  .btn {
+    display: inline-block;
+    margin: 4px auto;
+  }
+
+  body {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 375px) {
+  form {
+    text-align: left;
+  }
+
+  div.input-row:nth-child(2) {
+    margin-left: 0;
+  }
+
+  .input-row {
+    display: block;
+  }
+}
