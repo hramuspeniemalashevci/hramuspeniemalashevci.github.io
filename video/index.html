@@ -15,8 +15,6 @@
 
     <link rel="shortcut icon" href="/GLOBAL/assets/files-static/images/icon_tab.ico">
     <link rel="stylesheet" href="/GLOBAL/css-global/style.css">
-
-    <script src="./video-page.js" type="module"></script>
 </head>
 
 <body>
@@ -49,7 +47,12 @@
         <a href="/">успение-на-пресвета-богородица.бг</a>
     </footer>
 
-    <!-- <script src="./video-page.js" type="module"></script> -->
+    <script>console.log('video.html')</script>
+    <script src="./test.js" type="module"></script>
+    <script src="./video-page.js" type="module">
+        import { job } from "./test.js";
+        console.log(job + 'video');
+    </script>
 
 </body>
 
