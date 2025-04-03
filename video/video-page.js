@@ -111,7 +111,7 @@ showVideoPage(root);
 
 // Functions
 function showVideoPage(ctxInput) {
-  render(html`<p style="font-size:16px;color:black;">Зареждане ...</p>`, ctxInput);
+  render(html`<p style="font-size:16px;color:rgb(192, 0, 0);">... Данните се зареждат ...</p>`, ctxInput);
 
   render(videoTemplate(videosData), ctxInput);
 }

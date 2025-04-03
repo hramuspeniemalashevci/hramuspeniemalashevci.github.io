@@ -12,7 +12,7 @@ export async function loadCalendar(ev, year, monthEngName) {
   mainElem.replaceChildren(
     elementCreate(
       'p',
-      { style: 'color:rgb(192, 0, 0);' },
+      { style: 'color:rgb(192, 0, 0);text-align:center;' },
       'Данните се зареждат ...'
     )
   );

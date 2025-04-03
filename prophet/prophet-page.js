@@ -10,9 +10,9 @@ showProphetPage(root);
 const prophetTemplate = (data) => html`
     <div id="prophet-page">
         <!-- <section id="video-section"> -->
-        <h2>Проповед</h2>
+        <!-- <h2>Проповед</h2>
         &#128279;<a href="https://www.youtube.com/channel/UCS3ImmFAklu-KGOi7-Yn5EQ/videos" target="_blank" style="font-weight:bold">(Видео в
-            YouTube)</a>
+            YouTube)</a> -->    
         <div id="video-container">
             ${data.length === 0 ? noItemsTemplate() : data.map(el => cardTemplate(el))}
             <!-- ${data.length === 0 ? noItemsTemplate() : null} -->
@@ -44,7 +44,7 @@ const noItemsTemplate = () => html`
 
 // Functions
 async function showProphetPage(ctxInput) {
-    render(html`<p style="font-size:16px;color:black;">Зареждане ...</p>`, ctxInput);
+    render(html`<p style="font-size:16px;color:rgb(192, 0, 0);">... Данните се зареждат ...</p>`, ctxInput);
     const data = await getProphetStaticData();
 
     render(prophetTemplate(data), ctxInput);

@@ -16,7 +16,7 @@ const scheduleWrapper = document.getElementById('schedule-wrapper');
 // Execute functions
 // localStorageCheck();
 
-scheduleWrapper.replaceChildren(elementCreate('p', {}, 'Данните се зареждат ...'));
+scheduleWrapper.replaceChildren(elementCreate('p', { style: 'color:rgb(192, 0, 0)' }, '... Данните се зареждат ...'));
 renderSchedule();
 
 // FUNCTIONS
