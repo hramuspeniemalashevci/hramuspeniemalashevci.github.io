@@ -1,0 +1,90 @@
+#home-page h2 {
+    margin: 25px 15px 15px 15px;
+    padding: 0;
+    font-size: 18px;
+}
+
+#home-page hr {
+    margin: 40px;
+}
+
+#home-img-article {
+    margin-bottom: 50px;
+}
+
+#bank-article {
+    margin-bottom: 40px;
+}
+
+article.btn-container {
+    padding: 8px;
+}
+
+#honour-btn {
+    color: rgb(96, 123, 188);
+    border: 2px solid rgb(96, 123, 188);
+    margin: 12px;
+}
+
+#schedule-btn {
+    color: rgb(194, 80, 80);
+    border: 2px solid rgb(194, 80, 80);
+    margin: 12px;
+}
+
+#notifications-btn {
+    color: #44765d;
+    border: 2px solid #44765d;
+    margin: 12px;
+}
+
+#honour-btn:hover,
+#honour-btn:active {
+    background-color: rgb(96, 123, 188);
+    color: white;
+}
+
+#schedule-btn:hover,
+#schedule-btn:active {
+    background-color: rgb(194, 80, 80);
+    color: white;
+}
+
+#notifications-btn:hover,
+#notifications-btn:active {
+    background-color: #44765d;
+    color: white;
+}
+
+#notices-section {
+    margin: 0 auto 10px;
+    width: 80%;
+    padding: 2px;
+}
+
+#notices-section h4 {
+    margin: 0 0 8px 0;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    color: #44765d;
+}
+
+#notices-container {
+    border: 4px double white;
+    /* background-color: rgba(68, 118, 93, 1.0); */
+    background-color: #44765d;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+}
+
+#img-home {
+    /* border-radius: 5px;
+    width: 500px;
+    height: 300px; */
+
+    border-radius: 5px;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
