@@ -1,8 +1,8 @@
 // import { html, render } from '/node_modules/lit-html/l/it-html.js';
 
-import { } from "module";
+import { test } from "../../video/test.js";
 
-console.log('abc');
+console.log(test);
 
 import { html, render } from "../../node_modules/lit-html/lit-html.js";
 
