@@ -1,5 +1,5 @@
 // import { html, render } from '../GLOBAL/js-global/lib.js';
-import { html, render } from '../_node/node_modules/lit-html/lit-html.js';
+import { html, render } from '../node/node_modules/lit-html/lit-html.js';
 
 const videosData = [
   {
