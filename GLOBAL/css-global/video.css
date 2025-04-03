@@ -1,0 +1,13 @@
+#video-page {
+    padding-top: 15px;
+}
+
+#video-page a:hover,
+#video-page a:active {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+#video-page article {
+    margin-top: 15px;
+}
