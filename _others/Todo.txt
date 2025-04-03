@@ -2,7 +2,7 @@
 - Видео
 - Постни рецепти
 - Проповед >>> GoToTop button
-- Thumbnails >>> dimentions
+- Thumbnails >>> proper dimentions
 - Admin page >>> Известия / Богослужения / Проповед
 - Back4app Api >>> Users / Requests
 - Google Search Console >>> credentials
