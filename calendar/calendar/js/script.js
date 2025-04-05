@@ -7,7 +7,8 @@ initialPageLoad(currYear, currMonthEngName);
 
 // FUNCTIONS
 function initialPageLoad(year, monthEngName) {
-  window.location.href = '#page-start';
+  // !change
+  // window.location.href = '#page-start';
 
   menuYears.value = year;
   menuMonths.value = monthEngName;

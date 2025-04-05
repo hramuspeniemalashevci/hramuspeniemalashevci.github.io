@@ -76,12 +76,16 @@ function renderFullYearCalendarData(year, calendar, isBtnTarget) {
     pageFragment.appendChild(monthFragment);
   }
 
+  // !Added
+  pageFragment.appendChild(createBpcFooterDiv());
+
   mainElem.replaceChildren(pageFragment);
 
   if (isBtnTarget) {
     checkmarkAlertGreen();
   }
 
+  // !change
   // setTimeout(smoothRedirectToCurrDay, 700);
 }
 
@@ -114,20 +118,32 @@ function renderMonthCalendarData(year, monthEngName, calendar, isBtnTarget) {
     }
   });
 
+  // !Added
+  fragment.appendChild(createBpcFooterDiv());
   mainElem.replaceChildren(fragment);
+
+  renderPageFooter();
 
   if (isBtnTarget) {
     checkmarkAlertGreen();
   }
 
-  setTimeout(smoothRedirectToCurrDay, 700);
+  // !change
+  // setTimeout(smoothRedirectToCurrDay, 700);
+}
+
+// !Added
+function renderPageFooter() {
+  if (!document.querySelector('footer')) {
+    bodyElem.appendChild(createPageFooter());
+  }
 }
 
 // Imports
 import { weekDayNamesObj } from './constants.js';
 import { currYear, currDate, currMonthEngName } from './date.js';
-import { mainElem, fullYearCheckbox, menuYears, menuMonths } from './refs.js';
-import { createDateCard, elementCreate } from './dom.js';
+import { mainElem, fullYearCheckbox, menuYears, menuMonths, bodyElem } from './refs.js';
+import { createBpcFooterDiv, createDateCard, createPageFooter, elementCreate } from './dom.js';
 import { getCalendarRequest } from './requests.js';
 import {
   updateYearAndMonthHeadings,

@@ -50,5 +50,41 @@ export function elementCreate(elemType, attrObj, text) {
   return elem;
 }
 
+// !Added
+export function createBpcFooterDiv() {
+  // Footer Div
+  const footerDiv = elementCreate('div', { class: 'footer' }, 'Източник:');
+  const bpcLink = elementCreate(
+    'a',
+    {
+      href: 'https://bg-patriarshia.bg/calendar',
+      target: '_blank'
+    },
+    'Българска Патриаршия: Българска Православна Църква'
+  );
+
+  footerDiv.appendChild(bpcLink);
+
+  return footerDiv;
+}
+
+// !Added
+export function createPageFooter() {
+  // Footer
+  const footer = elementCreate(
+    'footer',
+    {
+      class: 'page-footer',
+      id: 'footer-index'
+    }
+  );
+
+  const templeLink = elementCreate('a', { href: '/' }, 'успение-на-пресвета-богородица.бг');
+
+  footer.appendChild(templeLink);
+
+  return footer;
+}
+
 // Imports
 import { menuMonths } from './refs.js';

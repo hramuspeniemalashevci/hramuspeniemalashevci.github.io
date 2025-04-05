@@ -1,4 +1,5 @@
 // References
+export const bodyElem = document.querySelector('body');
 export const mainElem = document.querySelector('main');
 export const headingYear = document.querySelector('#year-heading');
 export const headingMonth = document.querySelector('#month-heading');
