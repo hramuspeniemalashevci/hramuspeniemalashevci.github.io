@@ -1,0 +1,104 @@
+/* ##### BUTTONS ##### */
+
+/* BTN-TO-TOP [Start] */
+.btn-to-top {
+  width: 45px;
+  height: 45px;
+  background-color: rgba(128, 128, 128, 0.8);
+  border-radius: 50%;
+  position: fixed;
+  right: 20px;
+  z-index: 99;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-to-top div {
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-to-top svg {
+  color: white;
+  width: 85%;
+  height: auto;
+  color: white;
+}
+
+.btn-to-top polyline {
+  translate: 0 1em;
+}
+
+.btn-to-top polyline {
+  stroke-width: 24;
+}
+
+/* To-top button */
+.btn-to-top {
+  display: none;
+  bottom: 60px;
+}
+
+@media (hover: hover) {
+  .btn-to-top:hover {
+    border: 2px solid rgba(128, 128, 128, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
+  .btn-to-top:hover svg {
+    color: rgb(128, 128, 128);
+  }
+}
+
+@media (hover: none) {
+  .btn-to-top:active {
+    border: 2px solid rgba(128, 128, 128, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
+  .btn-to-top:active svg {
+    color: rgb(128, 128, 128);
+  }
+}
+/* BTN-TO-TOP [End] */
+
+/* Queries Common [Start] */
+@media (max-width: 1200px) {
+  #btn-to-top {
+    right: 10px;
+    width: 35px;
+    height: 35px;
+  }
+}
+/* Queries Common [End] */
+
+/* Small Elements [Start] */
+.check-mark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 14px;
+  height: 14px;
+}
+
+/* Alert - Onclick */
+.temp-alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 50%;
+  right: 50%;
+  transform: translate(50%, 50%);
+  color: white;
+  font-size: 26px;
+  font-weight: bold;
+  padding: 15px;
+  border: 4px solid white;
+  border-radius: 50%;
+}
+/* Small Elements [End] */

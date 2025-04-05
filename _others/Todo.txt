@@ -1,0 +1,8 @@
+- Заглавна снимка
+- Видео
+- Постни рецепти
+- Проповед >>> GoToTop button / Pagination
+- Thumbnails >>> proper dimentions
+- Admin page >>> Известия / Богослужения / Проповед
+- Back4app Api >>> Users / Requests
+- Google Search Console >>> credentials

@@ -1,0 +1,65 @@
+.page-main {
+    padding-bottom: 0;
+    padding: 10px;
+}
+
+a {
+    display: inline-block;
+}
+
+a:hover,
+a:active {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+label {
+    display: block;
+    margin: 15px auto;
+    text-align: center;
+}
+
+input {
+    margin: 15px auto;
+    padding: 5px;
+}
+
+button {
+    margin: 15px auto;
+    border-radius: 8px;
+    padding: 8px;
+    background-color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+#enter-btn {
+    border: 2px solid green;
+    color: green;
+}
+
+#notices-edit-btn,
+#schedule-edit-btn {
+    border: 2px solid green;
+    color: green;
+}
+
+#youtube-api-btn {
+    border: 2px solid blue;
+    color: blue;
+}
+
+#logout-btn {
+    border: 2px solid red;
+    color: red;
+}
+
+footer {
+    padding: 10px 25px;
+    text-align: center;
+}

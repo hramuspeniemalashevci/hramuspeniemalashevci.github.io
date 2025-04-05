@@ -1,0 +1,11 @@
+Page load
+- Update input fields with current year & month
+- Update year title
+- Update month title
+- Add event listener
+- Execute listener
+
+Btn click
+- Get year & month from input fields
+- Make request
+- Render calendar data
