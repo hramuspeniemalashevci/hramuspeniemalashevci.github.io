@@ -117,12 +117,9 @@ function elementCreate(elemType, attrObj, text) {
 
 // Requests functions
 async function getRequest() {
-    // SoftUni server
-    // const url = 'http://localhost:3030/jsonstore/schedule/storage';
-
     // Back4App server
     // const url = 'https://parseapi.back4app.com/classes/Schedule/ujMZdzqmbL';
-    const url = 'https://parseapi.back4app.com/classes/ScheduleArr/yrfW7lPqTn';
+    const url = 'https://parseapi.back4app.com/classes/Notices/Gw5HTuvO1i';
 
     const data = await makeRequest(url, 'get');
     return data;
@@ -133,8 +130,8 @@ async function makeRequest(url, methodStr, bodyObj) {
         method: methodStr,
         headers: {
             'Content-Type': 'application/json',
-            'X-Parse-Application-Id': 'wlZezVWuR0xG3VDM2SPqvEuSPE66bKspj5iKigGL',
-            'X-Parse-REST-API-Key': 'a0cX24dr7zCbVXCMWWmC8OQrDtKXvBsQ4AOd4bNA'
+            'X-Parse-Application-Id': 'vIKHEivxTRahTXolIJvc4DsMRbRVK5ccKWvZ7LBq',
+            'X-Parse-REST-API-Key': 'lKm1iE5AXVgyZujcGH0WKgeaRPRnN5tOEpjVQUAI'
         }
     };
 

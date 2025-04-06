@@ -34,7 +34,7 @@ button {
 
 #info-msg {
     color: rgb(204, 64, 64);
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 
 /* #dialog {
@@ -50,9 +50,9 @@ button {
     padding: 8px;
 } */
 
-#schedule-heading {
+/* #schedule-heading {
     margin-top: 10px;
-}
+} */
 
 #schedule-wrapper {
     padding: 10px 16px 5px;
