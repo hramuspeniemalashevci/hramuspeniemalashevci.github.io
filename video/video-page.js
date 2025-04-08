@@ -7,6 +7,11 @@ const videosData = [
     url: 'https://www.youtube.com/watch?v=1E0UV75dogY'
   },
   {
+    title: 'Бракът като подвижничество',
+    date: 'Apr 07, 2025',
+    url: 'https://www.youtube.com/watch?v=W5irBKyX8uY'
+  },
+  {
     title: 'Граници в общуването',
     date: 'Mar 10, 2025',
     url: 'https://www.youtube.com/watch?v=u1JM2Y9F37Y'

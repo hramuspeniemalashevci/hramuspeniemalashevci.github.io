@@ -35,7 +35,7 @@ const previewSection = document.getElementById('preview-section');
 const weekRangeContainer = document.getElementById('week-range-container');
 const previewContainer = document.getElementById('preview-container');
 
-// Attach event-listeners
+// Event-listeners
 document.getElementById('logout-top-btn').addEventListener('click', onLogout);
 document.getElementById('logout-bottom-btn').addEventListener('click', onLogout);
 document.getElementById('clear-all-btn').addEventListener('click', clearAllFields);
@@ -49,12 +49,9 @@ document.getElementById('confirm-send-btn').addEventListener('click', sendNewDat
 function sendNewData() {
     const dataArr = getCurrentData();
 
-    // SoftUni server
-    // const requestBodyObj = dataArr;
-
     // Back4App server
     const requestBodyObj = {
-        ScheduleArr: dataArr
+        Schedule: dataArr
     };
 
     updateRequest(requestBodyObj);
@@ -65,7 +62,7 @@ function sendNewData() {
 function renderPreview() {
     const dataArr = getCurrentData();
 
-    const title = elementCreate('h3', {}, `${dataArr[0].date} – ${dataArr[dataArr.length - 1].date} г.`);
+    const title = elementCreate('h3', {}, `${dataArr[0].date} – ${dataArr[dataArr.length - 2].date} г.`);
     weekRangeContainer.replaceChildren(title);
 
     const fragment = document.createDocumentFragment();
@@ -100,12 +97,14 @@ function getCurrentData() {
 
 function showPreviewSection() {
     document.getElementById('articles-section').style.display = 'none';
+    document.querySelector('.template-section').style.display = 'none';
     previewSection.style.display = 'block';
     window.location = '#preview-section';
 }
 
 function hidePreviewSection() {
     document.getElementById('articles-section').style.display = 'block';
+    document.querySelector('.template-section').style.display = 'none';
     previewSection.style.display = 'none';
     window.location = '#articles-section';
 }
@@ -143,7 +142,7 @@ function refreshAllDates(ev) {
         date++;
     });
 
-    alert('Датите са обновени!');
+    alert('... Датите са обновени ...');
 }
 
 function clearCardTextarea(ev) {
@@ -168,18 +167,16 @@ function localStorageCheck() {
 async function initialContentLoad() {
     document.getElementById('first-date-input').value = '';
 
-    // SoftUni server
-    // const data = await getRequest();
-
     // Back4App server
     const result = await getRequest();
-    const data = result.ScheduleArr;
-
+    const data = result.Schedule;
 
     const allCardsArr = Array.from(document.querySelectorAll('article.card'));
 
     for (let i = 0; i < allCardsArr.length; i++) {
         const currCard = allCardsArr[i];
+
+        // console.log(data[i]);
 
         currCard.querySelector('span.full-date-span').textContent = data[i].date;
         currCard.querySelector('span.weekday-span').textContent = data[i].day;
@@ -216,17 +213,6 @@ function createArticle(date, weekDay, description) {
     return container;
 }
 
-function elementCreate(elemType, attrObj, text) {
-    const elem = document.createElement(elemType);
-
-    for (const attr in attrObj) {
-        elem.setAttribute(attr, attrObj[attr]);
-    }
-
-    elem.textContent = text;
-    return elem;
-}
-
 // LocalStorage & others functions
 function onLogout() {
     localStorage.removeItem('authData');
@@ -248,65 +234,9 @@ function clearAllFields() {
         });
 }
 
-// Requests functions
-export async function updateRequest(bodyObj) {
-    // SoftUni server
-    // const url = 'http://localhost:3030/jsonstore/schedule/storage';
 
-    // Back4App server
-    // const url = 'https://parseapi.back4app.com/classes/Schedule/ujMZdzqmbL';
-    const url = 'https://parseapi.back4app.com/classes/ScheduleArr/yrfW7lPqTn';
+// IMPORTS
+import { getRequest, updateRequest } from "../../GLOBAL/js-global/requests.js";
+import { elementCreate } from "../../GLOBAL/js-global/dom.js";
 
-    return makeRequest(url, 'put', bodyObj);
-}
-
-export async function getRequest() {
-    // const url = 'https://parseapi.back4app.com/classes/Schedule/ujMZdzqmbL';
-    const url = 'https://parseapi.back4app.com/classes/ScheduleArr/yrfW7lPqTn';
-
-    const data = await makeRequest(url, 'get');
-    return data;
-}
-
-async function makeRequest(url, methodStr, bodyObj) {
-    const options = {
-        method: methodStr,
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Parse-Application-Id': 'wlZezVWuR0xG3VDM2SPqvEuSPE66bKspj5iKigGL',
-            'X-Parse-REST-API-Key': 'a0cX24dr7zCbVXCMWWmC8OQrDtKXvBsQ4AOd4bNA'
-        }
-    };
-
-    if (bodyObj) {
-        options['body'] = JSON.stringify(bodyObj);
-    }
-
-    try {
-        const res = await fetch(url, options);
-
-        if (res.ok !== true) {
-            const error = await res.json();
-            throw new Error(error);
-        }
-
-        const data = await res.json();
-
-        return data;
-
-    } catch (err) {
-        alert(err);
-    }
-}
-
-// ##### Notice #####
-/*
-const url = 'https://parseapi.back4app.com/classes/Schedule/ujMZdzqmbL';
-const options = {
-    method: 'get',
-    headers: {
-        'X-Parse-Application-Id': 'wlZezVWuR0xG3VDM2SPqvEuSPE66bKspj5iKigGL',
-        'X-Parse-REST-API-Key': 'a0cX24dr7zCbVXCMWWmC8OQrDtKXvBsQ4AOd4bNA'
-    }
-};
-*/
+export { getRequest, updateRequest };

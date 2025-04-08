@@ -1,75 +1,70 @@
-// Back4App server - HramUspenieAuthabc
-const back4App = {
+// Back4App server - HramUspenieMultipage
+
+export const info = {
     host: 'https://parseapi.back4app.com',
     headers: {
-        'X-Parse-Application-Id': 'wlZezVWuR0xG3VDM2SPqvEuSPE66bKspj5iKigGL',
-        'X-Parse-REST-API-Key': 'a0cX24dr7zCbVXCMWWmC8OQrDtKXvBsQ4AOd4bNA',
+        'X-Parse-Application-Id': 'qfnjFeXrdVN5ZBKiCTorInh3D4YQki5zxqZWCCsd',
+        'X-Parse-REST-API-Key': 'vgkdkHkymgE5vM8otldRwBtPkxPkE1WWVRbNykxK',
         'Content-Type': 'application/json'
     },
+    className: 'PublicData',
+    objectId: 'Nxw9VPfjS6',
+};
 
-    crud: {
-        read: {
-            endpoint: '/classes/MyCustomClassName',
-            method: 'GET',
+const usersInfo = {
+    signUp: {
+        headers: {
+            "X-Parse-Revocable-Session": "1"
         },
-
-        update: {
-            endpoint: '/classes/MyCustomClassName/MyCurrentObjectId',
-            method: 'PUT',
-        }
-
+        body: 'username+password+email',
+        response: ['objectId', 'sessionToken', 'r:']
     },
 
+    logIn: {
+        headers: {
+            "X-Parse-Revocable-Session": "1"
+        },
+        body: 'username+password',
+        response: ['objectId', 'sessionToken', 'r:']
+    },
+
+    passwordResetrequest: {
+        headers: {},
+        body: 'email',
+        response: ['objectId', 'sessionToken', 'r:']
+    },
+
+    update: {
+        headers: {
+            "X-Parse-Session-Token": ''
+        },
+        body: 'newDataObject',
+        response: ['sessionToken']
+    },
+
+    logout: {
+        headers: {
+            "X-Parse-Session-Token": ''
+        },
+        body: '',
+        response: ['emptyObject']
+    }
+
+}
+
+export const endpoints = {
+    crud: `${info.host}/classes/${info.className}/${info.objectId}`, // GET, PUT
     users: {
-        signUp: {
-            endpoint: '/users',
-            method: 'POST',
-            headers: {
-                "X-Parse-Revocable-Session": "1"
-            },
-            body: 'username+password+email',
-            response: ['objectId', 'sessionToken', 'r:']
-        },
-
-        logIn: {
-            endpoint: '/login',
-            method: 'POST',
-            headers: {
-                "X-Parse-Revocable-Session": "1"
-            },
-            body: 'username+password',
-            response: ['objectId', 'sessionToken', 'r:']
-        },
-        passwordResetrequest: {
-            endpoint: '/requestPasswordReset',
-            method: 'POST',
-            headers: {},
-            body: 'email',
-            response: ['objectId', 'sessionToken', 'r:']
-        },
-        update: {
-            endpoint: 'users/MyUserObjectId',
-            method: 'PUT',
-            headers: {
-                "X-Parse-Session-Token": ''
-            },
-            body: 'newDataObject',
-            response: ['sessionToken']
-        },
-        logout: {
-            endpoint: 'logout',
-            method: 'POST',
-            headers: {
-                "X-Parse-Session-Token": ''
-            },
-            body: '',
-            response: ['emptyObject']
-        }
-
+        signUp: `${info.host}/users`, // POST
+        logIn: `${info.host}/login`, // POST
+        passwordResetRequest: `${info.host}/requestPasswordReset`, // POST
+        update: `${info.host}/users/MyUserObjectId`, // PUT
+        logout: `${info.host}/logout`, // POST
     }
 };
 
-const back4appBodyObject = {
+
+const back4appBodyObjectSample = {
     "ScheduleArr": [
         {
             "date": "03.01.2022",
