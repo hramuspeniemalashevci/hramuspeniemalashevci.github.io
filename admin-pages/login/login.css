@@ -3,6 +3,10 @@
     padding: 10px;
 }
 
+header {
+    margin-bottom: 40px;
+}
+
 a {
     display: inline-block;
 }
@@ -38,6 +42,10 @@ button:hover {
     text-decoration-thickness: 2px;
 }
 
+div.edit {
+    margin-bottom: 40px;
+}
+
 #enter-btn {
     border: 2px solid green;
     color: green;
@@ -60,6 +68,10 @@ button:hover {
 }
 
 footer {
+    border-top: 1px solid black;
+    margin-top: 40px;
     padding: 10px 25px;
     text-align: center;
+    position: sticky;
+    top: 100vh;
 }

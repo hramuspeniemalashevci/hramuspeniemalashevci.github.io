@@ -16,7 +16,7 @@ export async function updateRequest(bodyObj) {
 
 
 // General requests
-async function makeHttpRequest(url, methodStr, headersObj, bodyObj) {
+export async function makeHttpRequest(url, methodStr, headersObj, bodyObj) {
   const options = {
     method: methodStr,
     headers: headersObj
@@ -39,7 +39,9 @@ async function makeHttpRequest(url, methodStr, headersObj, bodyObj) {
     return data;
 
   } catch (err) {
-    alert(err);
+    console.log(err);
+
+    alert('Грешка! >>> F12 >>> View console log.');
   }
 }
 

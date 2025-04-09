@@ -1,14 +1,5 @@
 window.onload = onPageLoad;
 
-// Youtube api variables
-// const url_1 = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCS3ImmFAklu-KGOi7-Yn5EQ&maxResults=100&order=date&key=AIzaSyCxzNhFqbAE650eUXWo1k-W9pe4WnVzgIY&pageToken=';
-// const url_2 = 'https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=3&playlistId=PLiC5bGURVFNcIqpPlxxiexv-8KxGIjnCt&key=AIzaSyCxzNhFqbAE650eUXWo1k-W9pe4WnVzgIY&pageToken=';
-// const url_3 = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCS3ImmFAklu-KGOi7-Yn5EQ&maxResults=100&order=date&q=%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9&key=AIzaSyCxzNhFqbAE650eUXWo1k-W9pe4WnVzgIY&pageToken=';
-const url_4 = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCS3ImmFAklu-KGOi7-Yn5EQ&maxResults=100&order=date&q=%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7Cmp4&type=video&key=AIzaSyCxzNhFqbAE650eUXWo1k-W9pe4WnVzgIY&pageToken=';
-
-// let nextPageToken = '';
-// const result = [];
-
 // Referernces
 const loginInput = document.getElementById('login-input');
 const logoutBtn = document.getElementById('logout-btn');
@@ -22,7 +13,7 @@ document.getElementById('notices-edit-btn').addEventListener('click', onNoticesE
 document.getElementById('schedule-edit-btn').addEventListener('click', onScheduleEditClick);
 logoutBtn.addEventListener('click', onLogout);
 restartBtn.addEventListener('click', onRestart);
-document.getElementById('youtube-api-btn').addEventListener('click', getYoutubeData);
+document.getElementById('youtube-api-btn').addEventListener('click', updateYoutubeData);
 
 // FUNCTIONS
 
@@ -132,7 +123,7 @@ function onRestart() {
     updateRequest(urlNotices, requestBodyObjNotices);
     updateRequest(urlSchedule, requestBodyObjSchedule);
 
-    alert('Данните са възстановени!');
+    alert(' ... Данните са възстановени ...');
 }
 
 // DOM
@@ -150,77 +141,6 @@ function hideEditBtns() {
     restartBtn.style.display = 'none';
 }
 
-// Requests functions
-async function updateRequest(url, bodyObj) {
-    return makeRequest(url, 'put', bodyObj);
-}
 
-async function getRequest() {
-    // SoftUni server
-    // const url = 'http://localhost:3030/jsonstore/notices/storage';
-
-    // Back4App server
-    const url = 'https://parseapi.back4app.com/classes/Notices/Eah1g4UkkD';
-
-    const data = await makeRequest(url, 'get');
-    return data;
-}
-
-async function makeRequest(url, methodStr, bodyObj) {
-    const options = {
-        method: methodStr,
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Parse-Application-Id': 'wlZezVWuR0xG3VDM2SPqvEuSPE66bKspj5iKigGL',
-            'X-Parse-REST-API-Key': 'a0cX24dr7zCbVXCMWWmC8OQrDtKXvBsQ4AOd4bNA'
-        }
-    };
-
-    if (bodyObj) {
-        options['body'] = JSON.stringify(bodyObj);
-    }
-
-    try {
-        const res = await fetch(url, options);
-
-        if (res.ok !== true) {
-            const error = await res.json();
-            throw new Error(error);
-        }
-
-        const data = await res.json();
-
-        return data;
-
-    } catch (err) {
-        alert(err);
-    }
-}
-
-// Youtube api function
-async function getYoutubeData() {
-    let nextPageToken = '';
-    const result = [];
-
-    while (nextPageToken !== undefined) {
-        const res = await fetch(url_4 + nextPageToken);
-        const data = await res.json();
-
-        nextPageToken = data.nextPageToken;
-
-        for (const item of data.items) {
-            const videoId = item.id.videoId;
-            const title = item.snippet.title;
-            const description = item.snippet.description;
-            const thumbnail = item.snippet.thumbnails.medium;
-            const publishTime = item.snippet.publishTime;
-
-            result.push({ videoId, title, description, thumbnail, publishTime });
-        }
-
-    }
-
-    // Print results
-    console.log(result);
-    return result;
-}
+// IMPORTS
+import { updateYoutubeData } from "../../GLOBAL/js-global/api/youtubeApi/youtube.js";

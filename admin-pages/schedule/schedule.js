@@ -55,7 +55,7 @@ function sendNewData() {
     };
 
     updateRequest(requestBodyObj);
-    alert('Данните са изпратени!');
+    alert('... Данните са изпратени ...');
     window.location.replace('/schedule');
 }
 
@@ -104,6 +104,7 @@ function showPreviewSection() {
 
 function hidePreviewSection() {
     document.getElementById('articles-section').style.display = 'block';
+    document.querySelector('.template-section').style.display = 'block';
     document.querySelector('.template-section').style.display = 'none';
     previewSection.style.display = 'none';
     window.location = '#articles-section';

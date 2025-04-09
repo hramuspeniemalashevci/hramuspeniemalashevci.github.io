@@ -36,17 +36,24 @@
         </div>
 
         <div id="edit-btns-div" style="display: none;">
-            <p>
-                <button id="notices-edit-btn">Известия (РЕДАКТИРАНЕ)</button>
-            </p>
+            <div class="edit">
+                <h4>Редактиране:</h4>
+                <p>
+                    <button id="notices-edit-btn">Известия (РЕДАКТИРАНЕ)</button>
+                </p>
 
-            <p>
-                <button id="schedule-edit-btn">Седмичен богослужебен график (РЕДАКТИРАНЕ)</button>
-            </p>
+                <p>
+                    <button id="schedule-edit-btn">Седмичен богослужебен график (РЕДАКТИРАНЕ)</button>
+                </p>
+            </div>
 
-            <p>
-                <button id="youtube-api-btn">YouTube заявка</button>
-            </p>
+            <div>
+                <h4>Синхронизиране на раздел "Проповед" с <a
+                        href="https://www.youtube.com/channel/UCS3ImmFAklu-KGOi7-Yn5EQ/videos"
+                        target="_blank">YouTube</a>:
+                </h4>
+                <button id="youtube-api-btn">YouTube синхронизиране</button>
+            </div>
 
         </div>
 
@@ -62,7 +69,7 @@
         </p>
     </footer>
 
-    <script src="./login/login.js"></script>
+    <script src="./login/login.js" type="module"></script>
 </body>
 
 </html>

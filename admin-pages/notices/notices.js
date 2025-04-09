@@ -30,11 +30,8 @@ function localStorageCheck() {
 async function initialContentLoad() {
     const serverData = await getRequest();
 
-    // SoftUni server
-    // const data = serverData[0].content;
-
     // Back4App server
-    const data = serverData.NoticesArr[0].content;
+    const data = serverData.NoticesHome[0].content;
 
     textAreaElem.value = data;
 }
@@ -86,16 +83,9 @@ function renderPreview() {
 function sendNewData() {
     const enteredText = textAreaElem.value.trim();
 
-    // SoftUni server
-    // const requestBodyObj = [
-    //     {
-    //         content: enteredText
-    //     }
-    // ];
-
     // Back4App server
     const requestBodyObj = {
-        "NoticesArr": [
+        "NoticesHome": [
             {
                 "content": enteredText
             }
@@ -103,71 +93,11 @@ function sendNewData() {
     };
 
     updateRequest(requestBodyObj);
-    alert('Данните са изпратени!');
+    alert('... Данните са изпратени ...');
     window.location.href = '/index.html';
 }
 
-// DOM functions
-function elementCreate(elemType, attrObj, text) {
-    const elem = document.createElement(elemType);
 
-    for (const attr in attrObj) {
-        elem.setAttribute(attr, attrObj[attr]);
-    }
-
-    elem.textContent = text;
-    return elem;
-}
-
-// Requests functions
-async function updateRequest(bodyObj) {
-    // SoftUni server
-    // const url = 'http://localhost:3030/jsonstore/notices/storage';
-
-    // Back4App server
-    const url = 'https://parseapi.back4app.com/classes/Notices/Eah1g4UkkD';
-
-    return makeRequest(url, 'put', bodyObj);
-}
-
-async function getRequest() {
-    // SoftUni server
-    // const url = 'http://localhost:3030/jsonstore/notices/storage';
-
-    // Back4App server
-    const url = 'https://parseapi.back4app.com/classes/Notices/Eah1g4UkkD';
-
-    const data = await makeRequest(url, 'get');
-    return data;
-}
-
-async function makeRequest(url, methodStr, bodyObj) {
-    const options = {
-        method: methodStr,
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Parse-Application-Id': 'wlZezVWuR0xG3VDM2SPqvEuSPE66bKspj5iKigGL',
-            'X-Parse-REST-API-Key': 'a0cX24dr7zCbVXCMWWmC8OQrDtKXvBsQ4AOd4bNA'
-        }
-    };
-
-    if (bodyObj) {
-        options['body'] = JSON.stringify(bodyObj);
-    }
-
-    try {
-        const res = await fetch(url, options);
-
-        if (res.ok !== true) {
-            const error = await res.json();
-            throw new Error(error);
-        }
-
-        const data = await res.json();
-
-        return data;
-
-    } catch (err) {
-        alert(err);
-    }
-}
+// IMPORTS
+import { getRequest, updateRequest } from "../../GLOBAL/js-global/requests.js";
+import { elementCreate } from "../../GLOBAL/js-global/dom.js";

@@ -49,7 +49,7 @@ async function updateRemoteData() {
   };
 
   updateRequest(requestBodyObj);
-  alert('Шаблонът е обновен!');
+  alert('... Шаблонът е обновен ...');
 }
 
 // IMPORTS

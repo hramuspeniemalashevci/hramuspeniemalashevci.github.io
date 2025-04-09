@@ -1,5 +1,7 @@
-import { getProphetStaticData } from '../GLOBAL/js-global/api/internal-api/api-internal.js';
+// import { getProphetStaticData } from '../GLOBAL/js-global/api/internal-api/api-internal.js';
+import { getYoutubeData } from '../GLOBAL/js-global/api/youtubeApi/youtube.js';
 import { html, render } from '../GLOBAL/js-global/lib.js';
+import { getRequest } from '../GLOBAL/js-global/requests.js';
 
 // let startIndex = 0;
 // const videoCount = 3;
@@ -45,7 +47,10 @@ const noItemsTemplate = () => html`
 // Functions
 async function showProphetPage(ctxInput) {
     render(html`<p style="font-size:16px;color:rgb(192, 0, 0);">... Данните се зареждат ...</p>`, ctxInput);
-    const data = await getProphetStaticData();
+    // const data = await getProphetStaticData();
+    const youtubeData = await getRequest();
+    const data = youtubeData.Youtube;
+    // console.log(data);
 
     render(prophetTemplate(data), ctxInput);
 
