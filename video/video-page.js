@@ -52,6 +52,11 @@ const videosData = [
     url: 'https://www.youtube.com/watch?v=Zy1O-4pOUNo'
   },
   {
+    title: 'Човешката душа',
+    date: 'Aug 26, 2024',
+    url: 'https://www.youtube.com/watch?v=46sOWRjSkFQ'
+  },
+  {
     title: 'Мъжът и жената преди брака',
     date: 'Feb 7, 2024',
     url: 'https://www.youtube.com/watch?v=J2OxgTzbyso'
@@ -97,9 +102,14 @@ const videosData = [
     url: 'https://www.youtube.com/watch?v=Q0iAUe0jybk'
   },
   {
-    title: 'СЕМЕЙСТВОТО СПОРЕД БОЖЕСТВЕНОТО И ЕВРОПЕЙСКОТО ПРАВО',
+    title: 'Семейството според Божественото и европейското право',
     date: 'Oct 6, 2021',
     url: 'https://www.youtube.com/watch?v=5xq74YPMg0c'
+  },
+  {
+    title: 'Борбата срещу Православието днес (2014 г.)',
+    date: 'Jul 30, 2023',
+    url: 'https://www.youtube.com/watch?v=TRU1NmAm_NI'
   }
 ];
 
