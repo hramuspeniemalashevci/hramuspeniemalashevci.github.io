@@ -40,6 +40,8 @@ export async function makeHttpRequest(url, methodStr, headersObj, bodyObj) {
 
   } catch (err) {
     console.log(err);
+    console.log(err.error);
+    console.log(JSON.stringify(err));
 
     alert('Грешка! >>> F12 >>> View console log.');
   }
