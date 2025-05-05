@@ -39,6 +39,8 @@ export async function makeHttpRequest(url, methodStr, headersObj, bodyObj) {
     return data;
 
   } catch (err) {
+    console.log(options.method);
+    console.log('########');
     console.log(err);
     console.log(err.error);
     console.log(JSON.stringify(err));

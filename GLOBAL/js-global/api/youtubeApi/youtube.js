@@ -37,9 +37,21 @@ export async function getYoutubeData() {
 }
 
 export async function updateYoutubeData() {
+  // ! temporary disabled
   const data = await getYoutubeData();
-  // Print results
   console.log(data);
+  // !
+
+  // ! temporary enabled
+  // console.log('###########');
+  // console.log(testYoutubeData);
+
+
+  // const dataObj = {
+  //   Youtube: testYoutubeData
+  // };
+  // !
+
 
   const dataObj = {
     Youtube: data
@@ -53,3 +65,4 @@ export async function updateYoutubeData() {
 
 // IMPORTS
 import { makeHttpRequest, updateRequest } from "../../requests.js";
+import { testYoutubeData } from './test-youtube-data.js';

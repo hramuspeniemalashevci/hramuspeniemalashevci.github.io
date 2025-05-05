@@ -48,9 +48,18 @@ const noItemsTemplate = () => html`
 async function showProphetPage(ctxInput) {
     render(html`<p style="font-size:16px;color:rgb(192, 0, 0);">... Данните се зареждат ...</p>`, ctxInput);
     // const data = await getProphetStaticData();
+    // ! temporary unabled
     const youtubeData = await getRequest();
     const data = youtubeData.Youtube;
+    // !
+
+    // ! temporary enabled
+    // const res = await fetch('../GLOBAL/js-global/api/youtubeApi/test-youtube-data.json');
+    // const data = await res.json();
+
+    // console.log('Temporary YouTube Data:');
     // console.log(data);
+    // !
 
     render(prophetTemplate(data), ctxInput);
 
