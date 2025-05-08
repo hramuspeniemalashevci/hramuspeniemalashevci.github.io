@@ -113,7 +113,7 @@ export async function updateYoutubeData() {
 }
 
 
-import { dummyYoutubeData } from '../../../.others/data-templates/dummy-youtube-data.js';
+// IMPORTS
 import { getDateAsText } from '../../js-global/date.js';
 // IMPORTS
 import { makeHttpRequest, updateRequest } from "../../js-global/requests.js";
