@@ -1,0 +1,13 @@
+- Заглавна снимка
+- Thumbnails >>> proper dimentions
+- Снимки на храма >>> Галерия / Facebook ?
+
+- Постни рецепти
+
+- Проповед >>> GoToTop button / Pagination
+- Set GoToTop position
+
+- Admin page >>> Известия / Богослужения / Проповед
+- Back4app Api >>> Users / Requests
+
+- Google Search Console >>> credentials

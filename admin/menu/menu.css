@@ -1,0 +1,86 @@
+body {
+    display: none;
+}
+
+.page-main {
+    padding-bottom: 0;
+    padding: 10px;
+}
+
+header {
+    margin-bottom: 40px;
+}
+
+a {
+    display: inline-block;
+}
+
+a:hover,
+a:active {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+label {
+    display: block;
+    margin: 15px auto;
+    text-align: center;
+}
+
+input {
+    margin: 15px auto;
+    padding: 5px;
+}
+
+button {
+    margin: 15px auto;
+    border-radius: 8px;
+    padding: 8px;
+    background-color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+div.edit {
+    margin-bottom: 40px;
+}
+
+/* #enter-btn {
+    border: 2px solid green;
+    color: green;
+} */
+
+button.edit {
+    border: 2px solid green;
+    color: green;
+}
+
+#youtube-sync-btn {
+    border: 2px solid blue;
+    color: blue;
+}
+
+.last-youtube-update {
+    color: rgb(218, 67, 67);
+    font-style: italic;
+    font-size: 90%;
+}
+
+#logout-btn {
+    border: 2px solid red;
+    color: red;
+}
+
+footer {
+    border-top: 1px solid black;
+    margin-top: 40px;
+    padding: 10px 25px;
+    text-align: center;
+    position: sticky;
+    top: 100vh;
+}

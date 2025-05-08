@@ -1,0 +1,112 @@
+/* ##### BUTTONS ##### */
+
+/* BTN-TO -TOP, -BOTTOM  [Start] */
+.btn-to-top,
+.btn-to-bottom {
+  width: 45px;
+  height: 45px;
+  background-color: rgba(128, 128, 128, 0.8);
+  border-radius: 50%;
+  position: fixed;
+  right: 20px;
+  z-index: 99;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-to-top div,
+.btn-to-bottom div {
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-to-top svg,
+.btn-to-bottom svg {
+  color: white;
+  width: 85%;
+  height: auto;
+  color: white;
+}
+
+.btn-to-top polyline,
+.btn-to-bottom polyline {
+  translate: 0 1em;
+  stroke-width: 24;
+}
+
+.btn-to-top polyline {
+  translate: 0 2em;
+}
+
+.btn-to-bottom polyline {
+  translate: 0 -3em;
+}
+
+/* .btn-to-top polyline {
+  stroke-width: 24;
+} */
+
+/* To-top button */
+.btn-to-top {
+  display: none;
+  bottom: 120px;
+  /* margin-bottom: 0; */
+}
+
+/* To-bottom button */
+.btn-to-bottom {
+  /* display: none; */
+  bottom: 60px;
+}
+
+@media (hover: hover) {
+
+  .btn-to-top:hover,
+  .btn-to-bottom:hover {
+    border: 2px solid rgba(128, 128, 128, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
+  .btn-to-top:hover svg,
+  .btn-to-bottom:hover svg {
+    color: rgb(128, 128, 128);
+  }
+}
+
+@media (hover: none) {
+
+  .btn-to-top:active,
+  .btn-to-bottom:active {
+    border: 2px solid rgba(128, 128, 128, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
+  .btn-to-top:active svg,
+  .btn-to-bottom:active svg {
+    color: rgb(128, 128, 128);
+  }
+}
+
+/* BTN-TO -TOP, -BOTTOM  [End] */
+
+/* Queries Common [Start] */
+@media (max-width: 670px) {
+
+  #btn-to-top,
+  #btn-to-bottom {
+    right: 10px;
+    width: 35px;
+    height: 35px;
+  }
+
+  .btn-to-top {
+    bottom: 110px;
+  }
+
+}
+
+/* Queries Common [End] */
