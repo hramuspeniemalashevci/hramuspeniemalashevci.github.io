@@ -1,0 +1,64 @@
+/* #table-div {
+    overflow-x: auto;
+} */
+
+#about-address {
+    line-height: 1.5;
+}
+
+#history {
+    line-height: 1.3;
+}
+
+#about-page a:hover,
+#about-page a:active {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+#about-page h3 {
+    margin-top: 15px;
+}
+
+#about-page li {
+    margin: 5px;
+}
+
+.bank-account-link {
+    margin-bottom: 8px;
+}
+
+table {
+    border-collapse: collapse;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+tr {
+    background-color: rgb(250, 255, 255);
+}
+
+th,
+td {
+    padding: 6px;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+}
+
+@media (max-width: 350px) {
+
+    th,
+    td {
+        display: block;
+    }
+
+    td {
+        padding-top: 0;
+        border-top: none;
+    }
+
+    .wrap-anywhere {
+        overflow-wrap: anywhere;
+
+    }
+}
