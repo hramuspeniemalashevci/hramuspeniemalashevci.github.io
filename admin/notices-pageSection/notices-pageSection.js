@@ -1,4 +1,4 @@
-const redirectPath = '../../';
+const redirectPathOnError = '/admin';
 const back4appBrowserStorageItemName = back4app.back4appBrowserStorageItemName;
 
 // Execute functions
@@ -21,7 +21,7 @@ document.getElementById('confirm-send-btn').addEventListener('click', sendNewDat
 
 // FUNCTIONS
 async function initialContentLoad() {
-    browserStorageValidation(back4appBrowserStorageItemName, redirectPath, 'user');
+    browserStorageValidation(back4appBrowserStorageItemName, redirectPathOnError, 'user');
 
     const serverData = await getRequest();
 

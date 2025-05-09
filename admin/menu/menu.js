@@ -1,4 +1,4 @@
-const redirectPath = '../';
+const redirectPathOnError = '/admin';
 const back4appBrowserStorageItemName = back4app.back4appBrowserStorageItemName;
 
 // Refs
@@ -25,7 +25,7 @@ window.onload = onPageLoad;
 // FUNCTIONS
 // Event-Handlers
 async function onPageLoad() {
-  browserStorageValidation(back4appBrowserStorageItemName, redirectPath, 'user');
+  browserStorageValidation(back4appBrowserStorageItemName, redirectPathOnError, 'user');
   await getLastYoutubeUpdate();
 }
 

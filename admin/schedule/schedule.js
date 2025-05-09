@@ -24,7 +24,7 @@ const monthsObj = {
     'Dec': '12',
 };
 
-const redirectPath = '/admin';
+const redirectPathOnError = '/admin';
 const back4appBrowserStorageItemName = back4app.back4appBrowserStorageItemName;
 
 // Execute functions
@@ -177,7 +177,7 @@ function clearCardTextarea(ev) {
 
 // OnInitialLoad functions
 async function initialContentLoad() {
-    browserStorageValidation(back4appBrowserStorageItemName, redirectPath, 'user');
+    browserStorageValidation(back4appBrowserStorageItemName, redirectPathOnError, 'user');
 
     document.getElementById('first-date-input').value = '';
 

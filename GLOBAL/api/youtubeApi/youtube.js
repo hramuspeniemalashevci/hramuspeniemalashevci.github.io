@@ -59,8 +59,6 @@ export async function getYoutubeData() {
 
     }
 
-    // console.log(result);
-
     return result;
 
   } catch (error) {
@@ -70,8 +68,8 @@ export async function getYoutubeData() {
 
     alert('Грешка при получаването на YouTube данните!');
     // ?
-    // throw error;
-    return null;
+    throw error;
+    // return null;
   }
 
 }
@@ -80,34 +78,30 @@ export async function updateYoutubeData() {
   lastYoutubeUpdateDiv.textContent = `... Данните се синхронизират ...`;
   lastYoutubeUpdateDiv.style.color = 'rgb(218, 67, 67)';
 
-  const data = await getYoutubeData();
-  // !
-  console.log(data);
-
-  if (data === null) {
-    // alert('Грешка при получаването на YouTube данните!');
-    return null;
-  }
-
-  const dataObj = {
-    Youtube: data
-  };
-
   try {
-    const sentData = await updateRequest(dataObj);
-    // console.log(sentData);
+    const data = await getYoutubeData();
+    // !
+    console.log('YouTube data >>>', data);
 
-    await updatingLastYoutubeUpdateDate();
-    alert('... Данните са синхронизирани ...');
+    const dataObj = {
+      Youtube: data
+    };
+
+    try {
+      const sentData = await updateRequest(dataObj);
+      // console.log(sentData);
+
+      await updatingLastYoutubeUpdateDate();
+      alert('... Данните са синхронизирани ...');
+
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
 
   } catch (error) {
     console.log(error);
-    // alert('Грешка при синхронизиране на YouTube данните!');
-
-    // ?
-    throw error;
-    // ?
-    return null;
+    throw error
   }
 
 }
