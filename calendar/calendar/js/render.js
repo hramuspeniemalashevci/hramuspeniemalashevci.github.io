@@ -12,8 +12,8 @@ export async function loadCalendar(ev, year, monthEngName) {
   mainElem.replaceChildren(
     elementCreate(
       'p',
-      { style: 'color:rgb(192, 0, 0);text-align:center;' },
-      'Данните се зареждат ...'
+      { style: 'color:rgb(192, 0, 0);text-align:center;font-style:italic;' },
+      '... Данните се зареждат ...'
     )
   );
 

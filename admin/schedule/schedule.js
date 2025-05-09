@@ -24,22 +24,30 @@ const monthsObj = {
     'Dec': '12',
 };
 
+const redirectPath = '/admin';
+const back4appBrowserStorageItemName = back4app.back4appBrowserStorageItemName;
+
 // Execute functions
-localStorageCheck();
 initialContentLoad();
 
 // References
 const allCardsArr = Array.from(document.querySelectorAll('article.card'));
 const firstDateInput = document.getElementById('first-date-input');
-const previewSection = document.getElementById('preview-section');
 const weekRangeContainer = document.getElementById('week-range-container');
 const previewContainer = document.getElementById('preview-container');
+
+const topBtnsGroup = document.querySelector('.top-btns-group');
+const articlesSection = document.getElementById('articles-section');
+const templateSection = document.querySelector('.template-section');
+const previewSection = document.getElementById('preview-section');
+
 
 const loaderDivTop = document.querySelector('.loader.-top');
 
 // Event-listeners
-document.getElementById('logout-top-btn').addEventListener('click', onLogout);
-document.getElementById('logout-bottom-btn').addEventListener('click', onLogout);
+document.getElementById('logout-top-btn').addEventListener('click', logoutAllUserSessions);
+document.getElementById('logout-bottom-btn').addEventListener('click', logoutAllUserSessions);
+
 document.getElementById('clear-all-btn').addEventListener('click', clearAllFields);
 document.getElementById('confirm-first-date-btn').addEventListener('click', refreshAllDates);
 document.getElementById('articles-container').addEventListener('click', clearCardTextarea);
@@ -48,7 +56,7 @@ document.getElementById('back-to-form-btn').addEventListener('click', hidePrevie
 document.getElementById('confirm-send-btn').addEventListener('click', sendNewData);
 
 // FUNCTIONS
-function sendNewData() {
+async function sendNewData() {
     const dataArr = getCurrentData();
 
     // Back4App server
@@ -56,9 +64,17 @@ function sendNewData() {
         Schedule: dataArr
     };
 
-    updateRequest(requestBodyObj);
-    alert('... Данните са изпратени ...');
-    window.location.replace('/schedule');
+    try {
+        await updateRequest(requestBodyObj);
+        alert('... Данните са изпратени ...');
+        window.location.href = '/schedule';
+
+    } catch (error) {
+        console.log(error);
+
+        removeAllBack4appUsersessionData()
+        window.location.replace('/admin');
+    }
 }
 
 function renderPreview() {
@@ -98,18 +114,19 @@ function getCurrentData() {
 }
 
 function showPreviewSection() {
-    document.getElementById('articles-section').style.display = 'none';
-    document.querySelector('.template-section').style.display = 'none';
+    topBtnsGroup.style.display = 'none';
+    articlesSection.style.display = 'none';
+    templateSection.style.display = 'none';
+
     previewSection.style.display = 'block';
-    window.location = '#preview-section';
 }
 
 function hidePreviewSection() {
-    document.getElementById('articles-section').style.display = 'block';
-    document.querySelector('.template-section').style.display = 'block';
-    document.querySelector('.template-section').style.display = 'none';
     previewSection.style.display = 'none';
-    window.location = '#articles-section';
+
+    topBtnsGroup.style.display = 'block';
+    articlesSection.style.display = 'block';
+    templateSection.style.display = 'block';
 }
 
 function refreshAllDates(ev) {
@@ -159,15 +176,9 @@ function clearCardTextarea(ev) {
 }
 
 // OnInitialLoad functions
-function localStorageCheck() {
-    // const authData = localStorage.getItem('authData');
-
-    // if (authData !== '733fa9a1-26b6-490d-b299-21f120b2f53a') {
-    //     window.location.replace('/admin');
-    // }
-}
-
 async function initialContentLoad() {
+    browserStorageValidation(back4appBrowserStorageItemName, redirectPath, 'user');
+
     document.getElementById('first-date-input').value = '';
 
     // Back4App server
@@ -219,11 +230,6 @@ function createArticle(date, weekDay, description) {
 }
 
 // LocalStorage & others functions
-function onLogout() {
-    localStorage.removeItem('authData');
-    window.location.replace('/admin');
-}
-
 function clearAllFields() {
     const respond = confirm('Изчистване на всички полета?');
 
@@ -241,7 +247,10 @@ function clearAllFields() {
 
 
 // IMPORTS
+import * as back4app from "../../GLOBAL/api/back4appApi/back4app.js";
+import { browserStorageValidation, removeAllBack4appUsersessionData } from '../../GLOBAL/js-global/browser-storage.js';
 import { getRequest, updateRequest } from "../../GLOBAL/js-global/requests.js";
 import { elementCreate } from "../../GLOBAL/js-global/dom.js";
+import { logoutAllUserSessions } from '../../GLOBAL/js-global/requests-users.js';
 
 export { getRequest, updateRequest };

@@ -5,7 +5,7 @@ const lastWeekDate = document.getElementById('last-weekdate-span');
 
 const scheduleWrapper = document.getElementById('schedule-wrapper');
 
-scheduleWrapper.replaceChildren(elementCreate('p', { style: 'color:rgb(192, 0, 0)' }, '... Данните се зареждат ...'));
+scheduleWrapper.replaceChildren(elementCreate('p', { style: 'color:rgb(192, 0, 0);font-style:italic' }, '... Данните се зареждат ...'));
 renderSchedule();
 
 // FUNCTIONS

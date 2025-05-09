@@ -31,14 +31,29 @@ printRemoteData();
 
 // Get data
 async function getTemplateRemoteData() {
-  const data = await getRequest();
-  return data.ScheduleTemplate[0].content;
+
+  try {
+    const data = await getRequest();
+    return data.ScheduleTemplate[0].content;
+
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+
 }
 
 async function printRemoteData() {
-  const data = await getTemplateRemoteData();
-  textareaElem.value = data;
-  loaderDivTBottom.style.display = 'none';
+  try {
+    const data = await getTemplateRemoteData();
+    textareaElem.value = data;
+    loaderDivTBottom.style.display = 'none';
+
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+
 }
 
 // Update data
@@ -51,9 +66,19 @@ async function updateRemoteData() {
     ]
   };
 
-  updateRequest(requestBodyObj);
-  alert('... Шаблонът е обновен ...');
+  try {
+    await updateRequest(requestBodyObj);
+    alert('... Шаблонът е обновен ...');
+
+  } catch (error) {
+    console.log(error);
+
+    removeAllBack4appUsersessionData()
+    window.location.replace('/admin');
+  }
+
 }
 
 // IMPORTS
+import { removeAllBack4appUsersessionData } from '../../GLOBAL/js-global/browser-storage.js';
 import { getRequest, updateRequest } from "./schedule.js";

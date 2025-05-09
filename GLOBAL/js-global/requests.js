@@ -3,8 +3,19 @@ export async function getRequest() {
   const url = back4app.endpoints.crud;
   const headers = back4app.info.headers;
 
-  const data = await makeHttpRequest(url, 'GET', headers);
-  return data;
+  try {
+    const data = await makeHttpRequest(url, 'GET', headers);
+    return data;
+
+  } catch (error) {
+    console.log(error);
+    console.log(JSON.parse(error));
+
+    alert('"GET" request failed!');
+
+    throw error;
+  }
+
 }
 
 export async function updateRequest(bodyObj) {
@@ -18,17 +29,19 @@ export async function updateRequest(bodyObj) {
   try {
     const data = await makeHttpRequest(url, 'PUT', headers, bodyObj);
 
-    if (data === null) {
-      throw new Error("");
-    }
+    // if (data === null) {
+    //   throw new Error("");
+    // }
 
     return data;
 
   } catch (error) {
     console.log(error);
+    // console.log(JSON.parse(error));
 
     alert('"PUT" request failed!');
 
+    throw error;
     return null;
   }
 
@@ -68,7 +81,7 @@ export async function makeHttpRequest(url, methodStr, headersObj, bodyObj) {
     }
 
     // ?
-    // throw error;
+    throw error;
     // alert('Грешка! >>> F12 >>> View console log.');
     return null;
   }

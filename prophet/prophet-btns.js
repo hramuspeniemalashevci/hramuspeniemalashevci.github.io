@@ -1,13 +1,24 @@
+// ?
+let isFirstScroll = 0;
+
 const btnToTop = document.querySelector('#btn-to-top');
-const btnToBottom = document.querySelector('#btn-to-bottom');
+export const btnToBottom = document.querySelector('#btn-to-bottom');
 
 // -- Button-to-top listeners
 window.addEventListener('scroll', onScreenScroll);
 btnToTop.addEventListener('click', goToScreenTop);
 btnToBottom.addEventListener('click', goToScreenBottom);
 
+// ?
+const polylineElem = btnToBottom.querySelector('polyline');
+
 // --- Screen scroll functions
 function onScreenScroll() {
+  // ?
+  if (isFirstScroll === 0) {
+    polylineElem.style.translate = '0 -1.5em';
+  }
+
   if (
     document.body.scrollTop > 120 ||
     document.documentElement.scrollTop > 120
@@ -29,6 +40,10 @@ function onScreenScroll() {
     btnToBottom.style.display = 'block';
   }
 
+  // ?
+  if (isFirstScroll === 0) {
+    isFirstScroll++;
+  }
 }
 
 function goToScreenTop() {

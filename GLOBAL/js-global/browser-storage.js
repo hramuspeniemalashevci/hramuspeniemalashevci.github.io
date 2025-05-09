@@ -78,3 +78,12 @@ export function removeBrowserStorageItem(itemName, storageType) {
   }
 
 }
+
+export function removeAllBack4appUsersessionData() {
+  removeBrowserStorageItem(back4appBrowserStorageItemName, 'local');
+  removeBrowserStorageItem(back4appBrowserStorageItemName, 'session');
+}
+
+
+// IMPORTS
+import { back4appBrowserStorageItemName } from "../api/back4appApi/back4app.js";

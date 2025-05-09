@@ -71,7 +71,7 @@ function renderPreview() {
     showPreviewSection()
 }
 
-function sendNewData() {
+async function sendNewData() {
     const enteredText = textAreaElem.value.trim();
 
     // Back4App server
@@ -83,15 +83,24 @@ function sendNewData() {
         ]
     };
 
-    updateRequest(requestBodyObj);
-    alert('... Данните са изпратени ...');
-    window.location.href = '/notifications';
+    try {
+        await updateRequest(requestBodyObj);
+
+        alert('... Данните са изпратени ...');
+        // window.location.href = '/notifications';
+
+    } catch (error) {
+        console.log(error);
+
+        removeAllBack4appUsersessionData()
+        window.location.replace('/admin');
+    }
 }
 
 
 // IMPORTS
 import * as back4app from "../../GLOBAL/api/back4appApi/back4app.js";
-import { browserStorageValidation } from "../../GLOBAL/js-global/browser-storage.js";
+import { browserStorageValidation, removeAllBack4appUsersessionData } from "../../GLOBAL/js-global/browser-storage.js";
 import { getRequest, updateRequest } from "../../GLOBAL/js-global/requests.js";
 import { elementCreate } from "../../GLOBAL/js-global/dom.js";
 import { logoutAllUserSessions } from '../../GLOBAL/js-global/requests-users.js';

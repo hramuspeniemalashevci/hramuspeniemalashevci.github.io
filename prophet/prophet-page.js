@@ -7,7 +7,10 @@ const loadMoreBtnElem = document.querySelector('#load-more-btn');
 const loadedVideosElem = document.querySelector('.loaded-videos');
 
 
-loadMoreBtnElem.addEventListener('click', () => addVideoSectionFragment(dataArr));
+loadMoreBtnElem.addEventListener('click', () => {
+    addVideoSectionFragment(dataArr)
+    btnToBottom.style.display = 'block';
+});
 
 showProphetPage(videoContainer);
 
@@ -105,3 +108,4 @@ import { elementCreate } from '../GLOBAL/js-global/dom.js';
 // import { getProphetStaticData } from '../GLOBAL/api/internal-api/api-internal.js';
 import { html, render } from '../GLOBAL/js-global/lib.js';
 import { getRequest } from '../GLOBAL/js-global/requests.js';
+import { btnToBottom } from './prophet-btns.js';
