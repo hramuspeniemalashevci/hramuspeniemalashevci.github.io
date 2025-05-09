@@ -21,3 +21,8 @@
     max-width: fit-content;
   }
 }
+
+.loader {
+  color: rgb(204, 64, 64);
+  font-style: italic;
+}

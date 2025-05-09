@@ -34,16 +34,15 @@
 
 .btn-to-top polyline,
 .btn-to-bottom polyline {
-  translate: 0 1em;
   stroke-width: 24;
 }
 
 .btn-to-top polyline {
-  translate: 0 2em;
+  translate: 0 1em;
 }
 
 .btn-to-bottom polyline {
-  translate: 0 -3em;
+  translate: 0 -2em;
 }
 
 /* .btn-to-top polyline {

@@ -7,9 +7,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Редактиране - Раздел "Известия" | Храм УСПЕНИЕ НА ПРЕСВЕТА БОГОРОДИЦА &#8211; гр.София, кв.Малашевци</title>
-    <link rel="shortcut icon" href="/GLOBAL/assets/files-static/images/gear_tab.ico">
+    <link rel="shortcut icon" href="/GLOBAL/assets/files-static/images/gear_tab-max.ico">
 
     <link rel="stylesheet" href="/GLOBAL/css-global/common.css">
+    <link rel="stylesheet" href="../GLOBAL/css/global-global.css">
     <link rel="stylesheet" href="./notices-pageSection.css">
 </head>
 
@@ -26,6 +27,8 @@
             <article class="notices-card">
 
                 <label for="notices">Съдържание на известието:</label>
+                <div class="loader">... Данните се зареждат ...</div>
+
                 <form>
                     <textarea name="content" id="notices" cols="40" rows="7"
                         placeholder="... ВЪВЕДЕТЕ ТЕКСТ ..."></textarea>
@@ -40,7 +43,8 @@
 
             <button id="logout-bottom-btn">Изход</button>
             <button id="preview-btn">Преглед</button>
-            <a id="bottom-link" href="/admin">[ Избор за редактиране ]</a>
+            <a id="bottom-link" class="link-btn" href="/admin">Меню</a>
+
 
         </footer>
 

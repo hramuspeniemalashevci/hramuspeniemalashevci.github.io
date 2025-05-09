@@ -9,6 +9,7 @@ const textAreaElem = document.getElementById('notices');
 const noticesSection = document.getElementById('notices-section');
 const previewSection = document.getElementById('preview-section');
 const noticesPreviewContainer = document.getElementById('notices-preview-container');
+const loaderDiv = document.querySelector('.loader');
 
 // Attach event-listeners
 document.getElementById('logout-bottom-btn').addEventListener('click', logoutAllUserSessions);
@@ -27,6 +28,7 @@ async function initialContentLoad() {
     // Back4App server
     const data = serverData.NoticesSection[0].content;
 
+    loaderDiv.style.display = 'none';
     textAreaElem.value = data;
 }
 

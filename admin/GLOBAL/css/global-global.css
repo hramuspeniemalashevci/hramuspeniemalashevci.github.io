@@ -1,0 +1,79 @@
+.link-btn:link,
+.link-btn:visited {
+  padding: 4px;
+  border-color: blue;
+  color: blue;
+}
+
+.link-btn:hover,
+.link-btn:active {
+  background-color: blue;
+  color: white;
+}
+
+/* .clear-textarea:hover,
+.clear-currday-textarea:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+} */
+
+button:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+button,
+.link-btn:link:link {
+  font-family: inherit;
+  font-size: 95%;
+  font-weight: normal !important;
+}
+
+.btn-template {
+  border: 2px solid black;
+}
+
+.btns-group {
+  /* border: 2px solid purple; */
+  padding-bottom: 15px;
+}
+
+.btns-group.-top {
+  margin-top: 0;
+  padding-top: 15px;
+}
+
+.btns-group.-bottom {
+  margin-top: 50px;
+}
+
+header.top-btns-group {
+  text-align: center;
+}
+
+hr.schedule {
+  margin: 40px auto;
+  width: 75%;
+
+}
+
+#clear-all-btn {
+  background-color: rgb(136, 12, 136);
+  border-color: rgb(136, 12, 136) !important;
+  color: white;
+}
+
+.template-section {
+  margin-top: 32px;
+  padding-top: 40px;
+}
+
+.template-section div {
+  margin-top: 40px;
+}
+
+.loader {
+  color: rgb(204, 64, 64);
+  margin-top: 10px;
+  font-style: italic;
+}

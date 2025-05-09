@@ -8,33 +8,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Редактиране - Богослужения (график) | Храм УСПЕНИЕ НА ПРЕСВЕТА БОГОРОДИЦА &#8211; гр.София, кв.Малашевци
     </title>
-    <link rel="shortcut icon" href="/GLOBAL/assets/files-static/images/gear_tab.ico">
+    <link rel="shortcut icon" href="/GLOBAL/assets/files-static/images/gear_tab-max.ico">
 
     <link rel="stylesheet" href="/GLOBAL/css-global/common.css">
+    <link rel="stylesheet" href="../GLOBAL/css/global-global.css">
     <link rel="stylesheet" href="./schedule.css">
 </head>
 
 <body>
     <script>0</script>
 
+    <header class="top-btns-group">
+        <div class="btns-group -top">
+            <button id="logout-top-btn">Изход</button>
+            <a id="bottom-link" class="link-btn" href="/admin">Меню</a>
+            <br>
+            <a id="top-link" href="/schedule">[ Богослужения през седмицата ]</a>
+        </div>
+    </header>
+
     <section id="articles-section">
 
-        <header class="top-btns-group">
-            <button id="logout-top-btn">Изход</button>
-            <a href="/admin">[ Избор за редактиране ]</a>
-            <a id="top-link" href="/schedule">[ Богослужения през седмицата ]</a>
-        </header>
 
         <h1>Редактиране на списъка с богослуженията за седмицата</h1>
 
-        <button id="clear-all-btn">Изчистване на всички полета</button>
 
         <fieldset id="first-weekday-div">
+
+            <button id="clear-all-btn">Изчистване на всички полета</button>
+
             <form id="first-weekday-form">
                 <label for="first-date-input">Първи ден от седмицата (дата):</label>
-                <input type="date" name="day" id="first-date-input" required>
+                <input type="date" name="day" id="first-date-input"
+                    title="Моля, въведете дата, която съответства на желания първи ден от седмицата" required>
                 <button id="confirm-first-date-btn">Обновяване на датите</button>
             </form>
+
+            <div class="loader -top">... Данните се зареждат ...</div>
+
         </fieldset>
 
         <div id="articles-container">
@@ -51,7 +62,7 @@
                 </form>
 
             </article>
-            <hr>
+            <hr class="schedule">
 
             <article id="tue-article" class="card">
                 <label for="tue-textarea">
@@ -67,7 +78,7 @@
                 </form>
 
             </article>
-            <hr>
+            <hr class="schedule">
 
             <article id="wed-article" class="card">
                 <label for="wed-textarea">
@@ -83,7 +94,7 @@
                 </form>
 
             </article>
-            <hr>
+            <hr class="schedule">
 
             <article id="thu-article" class="card">
                 <label for="thu-textarea">
@@ -98,7 +109,7 @@
                 </form>
 
             </article>
-            <hr>
+            <hr class="schedule">
 
             <article id="fri-article" class="card">
                 <label for="fri-textarea">
@@ -114,7 +125,7 @@
                 </form>
 
             </article>
-            <hr>
+            <hr class="schedule">
 
             <article id="sat-article" class="card">
                 <label for="sat-textarea">
@@ -130,7 +141,7 @@
                 </form>
 
             </article>
-            <hr>
+            <hr class="schedule">
 
             <article id="sun-article" class="card">
                 <label for="sun-textarea">
@@ -147,7 +158,7 @@
 
             </article>
 
-            <hr>
+            <hr class="schedule">
 
             <article id="next-mon-article" class="card">
                 <label for="next-mon-textarea">
@@ -167,10 +178,13 @@
         </div>
 
         <footer>
-            <button id="logout-bottom-btn">Изход</button>
-            <button id="preview-btn">Преглед</button>
-            <a href="/admin">[ Избор за редактиране ]</a>
-            <a id="bottom-link" href="/schedule">[ Богослужения през седмицата ]</a>
+            <div class="btns-group -bottom">
+                <button id="logout-bottom-btn">Изход</button>
+                <button id="preview-btn">Преглед</button>
+                <a id="bottom-link" class="link-btn" href="/admin">Меню</a>
+                <br>
+                <a id="bottom-link" href="/schedule">[ Богослужения през седмицата ]</a>
+            </div>
         </footer>
 
 
@@ -178,14 +192,16 @@
 
     <section class="template-section">
         <div>
+            <div class="loader -bottom">... Данните се зареждат ...</div>
+
             <h4>Текстов шаблон</h4>
             <form id="template-form">
                 <label for="template-text"></label>
                 <textarea name="templateText" id="template-text" cols="40" rows="7"
                     placeholder="... ВЪВЕДЕТЕ ТЕКСТ ...">
             </textarea>
-                <button id="template-reset" type="reset">Изчистване на шаблона</button>
-                <button id="template-update" type="submit">Обновяване на шаблона</button>
+                <button id="template-reset" class="btn-template" type="reset">Изчистване на шаблона</button>
+                <button id="template-update" class="btn-template" type="submit">Обновяване на шаблона</button>
             </form>
         </div>
 

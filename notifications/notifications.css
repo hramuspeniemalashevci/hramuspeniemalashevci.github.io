@@ -1,6 +1,7 @@
 .loader {
   /* color: rgb(218, 67, 67); */
   color: rgb(204, 64, 64);
+  font-style: italic;
 }
 
 #notices-container {

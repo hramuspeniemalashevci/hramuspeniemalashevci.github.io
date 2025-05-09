@@ -5,6 +5,7 @@ function showHomePage() {
     // Refs
     const noticesSection = document.getElementById('notices-section');
     const noticesContainer = document.getElementById('notices-container');
+    const loaderDiv = document.querySelector('.loader');
 
     // Execute functions
     renderNotices();
@@ -15,6 +16,8 @@ function showHomePage() {
         // Back4App server
         const serverData = await getRequest();
         const data = serverData.NoticesHome[0].content;
+
+        loaderDiv.style.display = 'none';
 
         if (data === '') {
             noticesSection.style.display = 'none';

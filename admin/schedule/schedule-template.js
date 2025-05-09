@@ -11,6 +11,8 @@ const textareaElem = document.getElementById('template-text');
 const btnResetTemplate = document.getElementById('template-reset');
 const btnUpdateTemplate = document.getElementById('template-update');
 
+const loaderDivTBottom = document.querySelector('.loader.-bottom');
+
 // Event listeners
 btnResetTemplate.addEventListener('click', (ev) => {
   ev.preventDefault();
@@ -36,6 +38,7 @@ async function getTemplateRemoteData() {
 async function printRemoteData() {
   const data = await getTemplateRemoteData();
   textareaElem.value = data;
+  loaderDivTBottom.style.display = 'none';
 }
 
 // Update data

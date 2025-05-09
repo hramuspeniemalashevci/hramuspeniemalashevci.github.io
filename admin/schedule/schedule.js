@@ -35,6 +35,8 @@ const previewSection = document.getElementById('preview-section');
 const weekRangeContainer = document.getElementById('week-range-container');
 const previewContainer = document.getElementById('preview-container');
 
+const loaderDivTop = document.querySelector('.loader.-top');
+
 // Event-listeners
 document.getElementById('logout-top-btn').addEventListener('click', onLogout);
 document.getElementById('logout-bottom-btn').addEventListener('click', onLogout);
@@ -183,6 +185,8 @@ async function initialContentLoad() {
         currCard.querySelector('span.weekday-span').textContent = data[i].day;
         currCard.querySelector('textarea').value = data[i].description;
     }
+
+    loaderDivTop.style.display = 'none';
 }
 
 // DOM functions

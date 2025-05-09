@@ -40,8 +40,10 @@ section {
 }
 
 #first-weekday-div {
-    border: 2px dashed rgb(74, 105, 204);
-    padding: 10px;
+    /* border: 2px dashed rgb(74, 105, 204); */
+    border: none;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 input[type='date'] {
@@ -73,10 +75,15 @@ button {
     border: 2px solid black;
 }
 
+#first-date-input {
+    cursor: pointer;
+}
+
 #confirm-first-date-btn {
     border: 2px solid rgb(74, 105, 204);
     background-color: rgb(74, 105, 204);
     color: white;
+    margin: 0;
 }
 
 #logout-top-btn,
