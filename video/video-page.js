@@ -1,5 +1,4 @@
-import { html, render } from '../GLOBAL/js-global/lib.js';
-
+// Data
 const videosData = [
   {
     title: 'Храм „Успение на Пресвета Богородица“ - кв. Малашевци (поглед отгоре)',
@@ -113,6 +112,7 @@ const videosData = [
   }
 ];
 
+
 // HTML Templates
 const videoTemplate = (data) => html`
     <div id="video-page">
@@ -131,12 +131,19 @@ const noItemsTemplate = () => html`
     <h3 class="title no-posts-title">Страницата все още няма налично съдържание ...</h3>
 `;
 
+// Refs
 const root = document.querySelector('.page-main');
+
+// Execution
 showVideoPage(root);
 
 // Functions
 function showVideoPage(ctxInput) {
-  render(html`<p style="font-size:16px;color:rgb(192, 0, 0);">... Данните се зареждат ...</p>`, ctxInput);
+  render(html`<p class="loader">... Данните се зареждат ...</p>`, ctxInput);
 
   render(videoTemplate(videosData), ctxInput);
 }
+
+
+// IMPORTS
+import { html, render } from '../GLOBAL/js-global/lib.js';

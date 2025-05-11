@@ -1,0 +1,46 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+h3 {
+  margin-bottom: 8px;
+}
+
+article.home-page,
+article.notifications-page,
+article.schedule-page {
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+article.home-page {
+  border: 1px solid green;
+}
+
+article.notifications-page {
+  border: 1px solid blue;
+}
+
+article.schedule-page {
+  border: 1px solid red;
+}
+
+.divider {
+  margin-top: 40px;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+footer {
+  margin-top: 70px;
+}
