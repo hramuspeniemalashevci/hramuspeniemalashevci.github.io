@@ -41,7 +41,7 @@ const noItemsTemplate = () => html`
 
 // Functions
 async function showProphetPage(ctxInput) {
-    render(html`<p class="loader" style="font-size:16px;color:rgb(192, 0, 0);">... Данните се зареждат ...</p>`, ctxInput);
+    render(html`<p class="loader">... Данните се зареждат ...</p>`, ctxInput);
     // const data = await getProphetStaticData();
     const youtubeData = await getRequest();
     const data = youtubeData.Youtube;
