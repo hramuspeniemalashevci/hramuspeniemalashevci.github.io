@@ -62,27 +62,35 @@ async function showProphetPage(ctxInput) {
 }
 
 function addVideoSectionFragment(data) {
+    const totalVideosCount = dataArr.length;
     let loadedInfo = null;
 
     const fragment = document.createDocumentFragment();
-    const lastIndex = startIndex + videosCount;
+    let lastIndex = startIndex + videosCount;
 
-    console.log('Start >>> ', startIndex + 1);
+    if (lastIndex > totalVideosCount) {
+        lastIndex = totalVideosCount;
+    }
+
+
+    // console.log('Start >>> ', startIndex + 1);
     loadedInfo = [startIndex + 1, lastIndex]
 
     const dataFrag = data.slice(startIndex, lastIndex).map(el => cardTemplate(el));
     startIndex = lastIndex;
 
 
-    if (startIndex >= dataArr.length) {
-        startIndex = dataArr.length;
+    if (startIndex >= totalVideosCount) {
+        startIndex = totalVideosCount;
         loadMoreBtnElem.style.display = 'none';
     }
 
-    console.log('End >>> ', startIndex);
-    loadedVideosElem.textContent = `Заредени проповеди: ${startIndex} от ${dataArr.length};`;
+    // console.log('End >>> ', startIndex);
+    loadedVideosElem.textContent = `Заредени проповеди: ${startIndex} от ${totalVideosCount};`;
 
     render(dataFrag, fragment);
+
+
     fragment.appendChild(elementCreate('p', { class: 'loaded-info' }, `( от ${loadedInfo[0]} до ${loadedInfo[1]} )`));
     fragment.appendChild(elementCreate('hr'));
 
@@ -103,9 +111,9 @@ function onImageClick(ev) {
     render(iframe, parag);
 }
 
-import { elementCreate } from '../GLOBAL/js-global/dom.js';
 // IMPORTS
 // import { getProphetStaticData } from '../GLOBAL/api/internal-api/api-internal.js';
+import { elementCreate } from '../GLOBAL/js-global/dom.js';
 import { html, render } from '../GLOBAL/js-global/lib.js';
 import { getRequest } from '../GLOBAL/js-global/requests.js';
 import { btnToBottom } from './prophet-btns.js';
