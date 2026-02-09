@@ -54,6 +54,10 @@ html {
   font-style: italic;
 }
 
+.youtube-link.first {
+  margin: 10px 0;
+}
+
 /* hr {
   margin-top: 0;
 } */
