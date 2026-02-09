@@ -116,8 +116,10 @@ button > * {
   /* font-style: italic; */
   /* border: 2px solid rgb(125, 117, 238);
   background-color: rgb(125, 117, 238); */
-  border: 2px solid rgb(83, 83, 255);
-  background-color: rgb(83, 83, 255);
+  /* border: 2px solid rgb(83, 83, 255);
+  background-color: rgb(83, 83, 255); */
+  border: 2px solid rgb(96, 123, 188);
+  background-color: rgb(96, 123, 188);
 }
 
 .card {
@@ -138,7 +140,8 @@ button > * {
 
 #current-day {
   /* border: 4px double rgb(125, 117, 238); */
-  border: 4px double rgb(83, 83, 255);
+  /* border: 4px double rgb(83, 83, 255); */
+  border: 4px double rgb(96, 123, 188);
   border-radius: 5px;
   padding: 5px;
 }

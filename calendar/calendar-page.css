@@ -1,27 +1,34 @@
-    body {
-      padding: 0;
-    }
+body {
+  padding: 0;
+}
 
-    main,
-    form {
-      padding: 0 20px;
-    }
+main,
+form {
+  padding: 0 20px;
+}
 
-    article.card {
-      text-align: left;
-    }
+article.card {
+  text-align: left;
+}
 
-    hr {
-      width: inherit;
-    }
+hr {
+  width: inherit;
+}
 
-    footer.page-footer {
-      padding: 0;
-      margin-top: 20px;
-    }
+footer.page-footer {
+  padding: 0;
+  margin-top: 20px;
+}
 
-    a.nav-link:link {
-      font-family: Helvetica, Verdana, Arial, sans-serif;
-      text-decoration: none;
-      font-weight: initial;
-    }
+a.nav-link:link {
+  font-family: Helvetica, Verdana, Arial, sans-serif;
+  text-decoration: none;
+  font-weight: initial;
+}
+
+.page-footer > a:link {
+  font-family: Helvetica, Verdana, Arial, sans-serif;
+  font-size: 17px;
+  font-weight: inherit;
+  text-decoration: none;
+}
