@@ -2,9 +2,9 @@ export async function loadCalendar(ev, year, monthEngName) {
   let isBtnTarget = null;
 
   if (ev) {
+    isBtnTarget = true;
     year = Number(ev.target.parentElement[0].value);
     monthEngName = ev.target.parentElement[1].value;
-    isBtnTarget = true;
   }
 
   updateYearAndMonthHeadings(year, monthEngName);
@@ -12,8 +12,8 @@ export async function loadCalendar(ev, year, monthEngName) {
   mainElem.replaceChildren(
     elementCreate(
       'p',
-      { style: 'color:rgb(192, 0, 0);text-align:center;font-style:italic;' },
-      '... Данните се зареждат ...'
+      { style: 'color:rgb(192, 0, 0);' },
+      'Данните се зареждат ...'
     )
   );
 
@@ -25,6 +25,7 @@ export async function loadCalendar(ev, year, monthEngName) {
 
   if (fullYearCheckbox.checked) {
     renderFullYearCalendarData(year, calendar, isBtnTarget)
+
   } else {
     renderMonthCalendarData(year, monthEngName, calendar, isBtnTarget);
   }
@@ -56,16 +57,8 @@ function renderFullYearCalendarData(year, calendar, isBtnTarget) {
       const description = dayObj.memoryOf;
       const state = dayObj.color;
 
-      const card = createDateCard(fullDate, description, state, isCurrDay());
+      const card = createDateCard(fullDate, description, state, isCurrDay(year, monthEngName, date));
       monthFragment.appendChild(card);
-
-      // Validation
-      function isCurrDay() {
-        const isCurrentYear = year === currYear;
-        const isCurrentMonth = monthEngName === currMonthEngName;
-        const isCurrDate = Number(date) === currDate;
-        return isCurrDate && isCurrentMonth && isCurrentYear;
-      }
     });
 
     if (monthEngName !== 'Dec') {
@@ -76,16 +69,14 @@ function renderFullYearCalendarData(year, calendar, isBtnTarget) {
     pageFragment.appendChild(monthFragment);
   }
 
-  // !Added
-  pageFragment.appendChild(createBpcFooterDiv());
-
   mainElem.replaceChildren(pageFragment);
 
   if (isBtnTarget) {
     checkmarkAlertGreen();
   }
 
-  // !change
+  toggleCurrentDayBtn();
+
   // setTimeout(smoothRedirectToCurrDay, 700);
 }
 
@@ -106,44 +97,50 @@ function renderMonthCalendarData(year, monthEngName, calendar, isBtnTarget) {
     const description = dayObj.memoryOf;
     const state = dayObj.color;
 
-    const card = createDateCard(fullDate, description, state, isCurrDay());
+    const card = createDateCard(fullDate, description, state, isCurrDay(year, monthEngName, date));
     fragment.appendChild(card);
-
-    // Validation
-    function isCurrDay() {
-      const isCurrentYear = year === currYear;
-      const isCurrentMonth = monthEngName === currMonthEngName;
-      const isCurrDate = Number(date) === currDate;
-      return isCurrDate && isCurrentMonth && isCurrentYear;
-    }
   });
 
-  // !Added
-  fragment.appendChild(createBpcFooterDiv());
   mainElem.replaceChildren(fragment);
-
-  renderPageFooter();
 
   if (isBtnTarget) {
     checkmarkAlertGreen();
   }
 
-  // ? Change
-  setTimeout(smoothRedirectToCurrDay, 700);
+  toggleCurrentDayBtn();
 }
 
-// !Added
-function renderPageFooter() {
-  if (!document.querySelector('footer')) {
-    bodyElem.appendChild(createPageFooter());
+function toggleCurrentDayBtn() {
+  const hasIdCurrentDay = document.querySelector('#current-day');
+  console.log(hasIdCurrentDay);
+
+
+  if (hasIdCurrentDay) {
+    currentDayBtn.style.display = 'inline-block';
+    currentDayBtn.addEventListener('click', () => {
+      setTimeout(smoothRedirectToCurrDay, 0);
+    });
+
+  } else {
+    currentDayBtn.style.display = 'none';
+    window.location.hash = '#';
   }
 }
+
+// Validation
+function isCurrDay(year, monthEngName, date) {
+  const isCurrentYear = year === currYear;
+  const isCurrentMonth = monthEngName === currMonthEngName;
+  const isCurrDate = Number(date) === currDate;
+  return isCurrDate && isCurrentMonth && isCurrentYear;
+}
+
 
 // Imports
 import { weekDayNamesObj } from './constants.js';
 import { currYear, currDate, currMonthEngName } from './date.js';
-import { mainElem, fullYearCheckbox, menuYears, menuMonths, bodyElem } from './refs.js';
-import { createBpcFooterDiv, createDateCard, createPageFooter, elementCreate } from './dom.js';
+import { mainElem, fullYearCheckbox, menuYears, menuMonths, currentDayBtn } from './refs.js';
+import { createDateCard, elementCreate } from './dom.js';
 import { getCalendarRequest } from './requests.js';
 import {
   updateYearAndMonthHeadings,

@@ -1,0 +1,27 @@
+    body {
+      padding: 0;
+    }
+
+    main,
+    form {
+      padding: 0 20px;
+    }
+
+    article.card {
+      text-align: left;
+    }
+
+    hr {
+      width: inherit;
+    }
+
+    footer.page-footer {
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    a.nav-link:link {
+      font-family: Helvetica, Verdana, Arial, sans-serif;
+      text-decoration: none;
+      font-weight: initial;
+    }

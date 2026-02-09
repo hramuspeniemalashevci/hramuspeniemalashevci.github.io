@@ -18,11 +18,11 @@ a {
     display: inline-block;
 }
 
-a:hover,
+/* a:hover,
 a:active {
     text-decoration: underline;
     text-decoration-thickness: 2px;
-}
+} */
 
 button {
     margin: 15px auto;

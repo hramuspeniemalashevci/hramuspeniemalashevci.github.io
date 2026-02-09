@@ -6,15 +6,15 @@ btnToTop.addEventListener('click', goToScreenTop);
 initialPageLoad(currYear, currMonthEngName);
 
 // FUNCTIONS
-function initialPageLoad(year, monthEngName) {
-  // !change
+function initialPageLoad(currentYear, currentMonthEngName) {
   // window.location.href = '#page-start';
+  // console.log('abc');
 
-  menuYears.value = year;
-  menuMonths.value = monthEngName;
+  menuYears.value = currentYear;
+  menuMonths.value = currentMonthEngName;
   fullYearCheckbox.checked = false;
 
-  loadCalendar(null, year, monthEngName);
+  loadCalendar(null, currentYear, currentMonthEngName);
 
   // Event listeners
   selectCalendarBtn.addEventListener('click', (ev) => loadCalendar(ev));
