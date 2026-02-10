@@ -1,10 +1,14 @@
 const host = 'https://youtube.googleapis.com/youtube/v3';
-const channelId = 'UCS3ImmFAklu-KGOi7-Yn5EQ';
+const channelId_NewChannel = 'UC2BiSiWSIhEQZ_lxiSuTWpw';
+const channelId_OldChannel = 'UCS3ImmFAklu-KGOi7-Yn5EQ';
+
 const maxResults = 50;
 const query = '%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7Cmp4';
 const apiKey = 'AIzaSyCxzNhFqbAE650eUXWo1k-W9pe4WnVzgIY';
 
-const search = `/search?part=snippet&channelId=${channelId}&maxResults=${maxResults}&order=date&q=${query}&type=video&key=${apiKey}&pageToken=`;
+const search_NewChannel = `/search?part=snippet&channelId=${channelId_NewChannel}&maxResults=${maxResults}&order=date&q=${query}&type=video&key=${apiKey}&pageToken=`;
+const search_OldChannel = `/search?part=snippet&channelId=${channelId_OldChannel}&maxResults=${maxResults}&order=date&q=${query}&type=video&key=${apiKey}&pageToken=`;
+
 // ex. Query string: 'search?part=snippet&channelId=UCS3ImmFAklu-KGOi7-Yn5EQ&maxResults=100&order=date&q=%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7Cmp4&type=video&key=AIzaSyCxzNhFqbAE650eUXWo1k-W9pe4WnVzgIY&pageToken='
 
 // Refs
@@ -32,7 +36,7 @@ async function updatingLastYoutubeUpdateDate() {
   }
 }
 
-export async function getYoutubeData() {
+async function getYoutubeData(host, search) {
   // ! Dummy data
   // return dummyYoutubeData;
 
@@ -79,9 +83,15 @@ export async function updateYoutubeData() {
   lastYoutubeUpdateDiv.style.color = 'rgb(218, 67, 67)';
 
   try {
-    const data = await getYoutubeData();
+    const data_NewChannel = await getYoutubeData(host, search_NewChannel);
     // !
-    console.log('YouTube data >>>', data);
+    console.log('YouTube data - NEW >>>', data_NewChannel);
+
+    const data_OldChannel = await getYoutubeData(host, search_OldChannel);
+    // !
+    console.log('YouTube data - OLD >>>', data_OldChannel);
+
+    const data = data_NewChannel.concat(data_OldChannel);
 
     const dataObj = {
       Youtube: data
