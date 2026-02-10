@@ -3,7 +3,8 @@ const channelId_NewChannel = 'UC2BiSiWSIhEQZ_lxiSuTWpw';
 const channelId_OldChannel = 'UCS3ImmFAklu-KGOi7-Yn5EQ';
 
 const maxResults = 50;
-const query = '%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7Cmp4';
+// const query = '%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7Cmp4';
+const query = '%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9';
 const apiKey = 'AIzaSyCxzNhFqbAE650eUXWo1k-W9pe4WnVzgIY';
 
 const search_NewChannel = `/search?part=snippet&channelId=${channelId_NewChannel}&maxResults=${maxResults}&order=date&q=${query}&type=video&key=${apiKey}&pageToken=`;
@@ -50,6 +51,9 @@ async function getYoutubeData(host, search) {
       const data = await makeHttpRequest(host + search + nextPageToken, 'GET');
 
       nextPageToken = data.nextPageToken;
+      // !
+      console.log('Next token >>> ', nextPageToken);
+
 
       for (const item of data.items) {
         const videoId = item.id.videoId;

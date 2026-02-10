@@ -56,6 +56,11 @@ const videosData = [
     url: 'https://www.youtube.com/watch?v=46sOWRjSkFQ'
   },
   {
+    title: 'Венчание и начало на брачния живот',
+    date: 'Mar 5, 2024',
+    url: 'https://youtu.be/1br6SUf2v6k?si=C0z8koRF5V5xHsM_'
+  },
+  {
     title: 'Мъжът и жената преди брака',
     date: 'Feb 7, 2024',
     url: 'https://www.youtube.com/watch?v=J2OxgTzbyso'
