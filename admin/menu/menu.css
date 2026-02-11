@@ -41,11 +41,6 @@ button {
     cursor: pointer;
 }
 
-button:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-}
-
 div.edit {
     margin-bottom: 40px;
 }
@@ -58,6 +53,27 @@ div.edit {
 button.edit {
     border: 2px solid green;
     color: green;
+}
+
+button:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+a.edit:link,
+a.edit:visited {
+    font-size: 90%;
+    font-weight: bold;
+    border: 2px solid green;
+    color: green;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+a.edit:hover,
+a.edit:active {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
 }
 
 #youtube-sync-btn {

@@ -94,11 +94,11 @@ export async function updateYoutubeData() {
   lastYoutubeUpdateDiv.style.color = 'rgb(218, 67, 67)';
 
   try {
-    const data_NewChannel = await getYoutubeData(host, search_NewChannel);
+    const data_NewChannel = await getYoutubeData(host_2, search_NewChannel);
     // !
     console.log('YouTube data - NEW >>>', data_NewChannel);
 
-    const data_OldChannel = await getYoutubeData(host, search_OldChannel);
+    const data_OldChannel = await getYoutubeData(host_2, search_OldChannel);
     // !
     console.log('YouTube data - OLD >>>', data_OldChannel);
 
