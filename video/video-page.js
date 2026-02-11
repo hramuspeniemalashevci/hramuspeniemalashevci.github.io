@@ -96,6 +96,11 @@ const videosData = [
     url: 'https://youtu.be/7-3sqCevY50?si=D7m_f-lDwkEYPfiB'
   },
   {
+    title: 'Духовните възрасти в духовния живот',
+    date: 'Nov 16, 2021',
+    url: 'https://youtu.be/92Bxs1p6pXY?si=jOrjo3NDoCc76SLA'
+  },
+  {
     title: 'Духовните болести',
     date: 'Nov 7, 2021',
     url: 'https://www.youtube.com/watch?v=HPdezbMB7Lw'

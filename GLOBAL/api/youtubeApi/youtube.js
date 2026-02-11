@@ -1,14 +1,20 @@
-const host = 'https://youtube.googleapis.com/youtube/v3';
+const host = 'https://youtube.googleapis.com/youtube/v3/search';
+const host_2 = 'https://www.googleapis.com/youtube/v3/search';
 const channelId_NewChannel = 'UC2BiSiWSIhEQZ_lxiSuTWpw';
 const channelId_OldChannel = 'UCS3ImmFAklu-KGOi7-Yn5EQ';
 
 const maxResults = 50;
 // const query = '%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7Cmp4';
+// const query = '%D1%81%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7C%D0%BF%D1%80%D0%BE%D0%BF%D0%BE%D0%B2%D0%B5%D0%B4';
 const query = '%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9';
 const apiKey = 'AIzaSyCxzNhFqbAE650eUXWo1k-W9pe4WnVzgIY';
 
-const search_NewChannel = `/search?part=snippet&channelId=${channelId_NewChannel}&maxResults=${maxResults}&order=date&q=${query}&type=video&key=${apiKey}&pageToken=`;
-const search_OldChannel = `/search?part=snippet&channelId=${channelId_OldChannel}&maxResults=${maxResults}&order=date&q=${query}&type=video&key=${apiKey}&pageToken=`;
+// ! publishedAfter
+// ! publisheBefore
+// ! The value is an RFC 3339 formatted date-time value (1970-01-01T00:00:00Z).
+
+const search_NewChannel = `?part=snippet&channelId=${channelId_NewChannel}&maxResults=${maxResults}&order=date&q=${query}&type=video&key=${apiKey}&pageToken=`;
+const search_OldChannel = `?part=snippet&channelId=${channelId_OldChannel}&maxResults=${maxResults}&order=date&q=${query}&type=video&key=${apiKey}&pageToken=`;
 
 // ex. Query string: 'search?part=snippet&channelId=UCS3ImmFAklu-KGOi7-Yn5EQ&maxResults=100&order=date&q=%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7Cmp4&type=video&key=AIzaSyCxzNhFqbAE650eUXWo1k-W9pe4WnVzgIY&pageToken='
 
@@ -53,6 +59,7 @@ async function getYoutubeData(host, search) {
       nextPageToken = data.nextPageToken;
       // !
       console.log('Next token >>> ', nextPageToken);
+      // console.log('Next token >>> ', data);
 
 
       for (const item of data.items) {
