@@ -86,6 +86,16 @@ const videosData = [
     url: 'https://www.youtube.com/watch?v=h6P4AtFErnc'
   },
   {
+    title: 'Показатели за нашето духовно състояние',
+    date: 'Nov 5, 2025',
+    url: 'https://youtu.be/k741FldiK4g?si=scP2Rn9xoCGqMpaA'
+  },
+  {
+    title: 'Спасява ли ни страданието',
+    date: 'Nov 2, 2025',
+    url: 'https://youtu.be/7-3sqCevY50?si=D7m_f-lDwkEYPfiB'
+  },
+  {
     title: 'Духовните болести',
     date: 'Nov 7, 2021',
     url: 'https://www.youtube.com/watch?v=HPdezbMB7Lw'

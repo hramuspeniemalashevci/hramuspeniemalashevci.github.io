@@ -110,10 +110,10 @@ export async function updateYoutubeData() {
 
     } catch (error) {
       console.log(error);
-      alert('Проблем при синхронизиране на данните! Моля, опитайте отново ...');
-      sessionStorage.removeItem(back4appBrowserStorageItemName);
-      localStorage.removeItem(back4appBrowserStorageItemName);
-      window.location.reload();
+      // alert('Проблем при синхронизиране на данните! Моля, опитайте отново ...');
+      // sessionStorage.removeItem(back4appBrowserStorageItemName);
+      // localStorage.removeItem(back4appBrowserStorageItemName);
+      // window.location.reload();
       throw error;
     }
 

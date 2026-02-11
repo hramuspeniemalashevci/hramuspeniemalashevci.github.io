@@ -26,7 +26,20 @@ export async function logoutAllUserSessions() {
     for (const elem of userSessionsData.results) {
       const currentSessionToken = elem.sessionToken;
 
-      await logoutRequest(currentSessionToken);
+      try {
+        await logoutRequest(currentSessionToken);
+
+      } catch (error) {
+        console.log(error);
+        alert('Изтекла потребителска сесия! Моля, опитайте отново ...');
+        removeBrowserStorageItem(back4app.back4appBrowserStorageItemName, 'session');
+        removeBrowserStorageItem(back4app.back4appBrowserStorageItemName, 'local');
+
+        // location.reload();
+        window.location.replace('/admin');
+        throw error;
+      }
+
     }
 
   }
