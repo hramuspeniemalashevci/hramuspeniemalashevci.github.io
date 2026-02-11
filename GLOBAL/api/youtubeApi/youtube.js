@@ -110,6 +110,10 @@ export async function updateYoutubeData() {
 
     } catch (error) {
       console.log(error);
+      alert('Проблем при синхронизиране на данните! Моля, опитайте отново ...');
+      sessionStorage.removeItem(back4appBrowserStorageItemName);
+      localStorage.removeItem(back4appBrowserStorageItemName);
+      window.location.reload();
       throw error;
     }
 
@@ -125,3 +129,4 @@ export async function updateYoutubeData() {
 import { getDateAsText } from '../../js-global/date.js';
 // IMPORTS
 import { makeHttpRequest, updateRequest } from "../../js-global/requests.js";
+import { back4appBrowserStorageItemName } from '../back4appApi/back4app.js';
