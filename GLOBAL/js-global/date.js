@@ -43,9 +43,12 @@ const currMonthIndex = d.getMonth();
 const currMonthEngName = monthsArr[currMonthIndex];
 const currDate = d.getDate();
 
+const hours = d.getHours();
+const minutes = d.getMinutes();
+
 // Functions
 export function getDateAsText() {
-  const dateAsString = `${currDate} ${monthsBgNames[currMonthIndex]} ${currYear} г.`;
+  const dateAsString = `${currDate} ${monthsBgNames[currMonthIndex]} ${currYear} г. / ${hours}:${minutes}`;
 
   console.log(dateAsString);
 
