@@ -1,4 +1,5 @@
-const Youtube = [
+// DATA
+const youtubeDataBackup_02_12_2026 = [
   {
     "videoId": "HzrXPnWKzmw",
     "title": "08.02.2026 проповед о. Сергей",
@@ -3994,5 +3995,31 @@ const Youtube = [
   }
 ];
 
+// EXECUTION
+console.log(youtubeDataBackup_02_12_2026.length);
 
-console.log(Youtube.length);
+const sorted = sortArrByDate(youtubeDataBackup_02_12_2026, 'ascending');
+console.log(sorted);
+
+// FUNCTIONS
+function sortArrByDate(arr, sortType) {
+  // sortType >>> 'ascending' OR 'descending'
+  const mappedArr = arr.map(el => {
+    el.publishTime = new Date(el.publishTime)
+    return el;
+  });
+
+  if (sortType === 'ascending') {
+    return mappedArr.sort((a, b) => {
+      return a.publishTime - b.publishTime;
+    });
+
+  } else if (sortType === 'descending') {
+    return mappedArr.sort((a, b) => {
+      return b.publishTime - a.publishTime;
+    });
+
+  } else {
+    return null;
+  }
+}
