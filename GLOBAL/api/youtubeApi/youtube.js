@@ -4,9 +4,9 @@ const channelId_NewChannel = 'UC2BiSiWSIhEQZ_lxiSuTWpw';
 const channelId_OldChannel = 'UCS3ImmFAklu-KGOi7-Yn5EQ';
 
 const maxResults = '50';
-// const query = '%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7Cmp4';
+const query = '%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7Cmp4';
 // const query = '%D1%81%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7C%D0%BF%D1%80%D0%BE%D0%BF%D0%BE%D0%B2%D0%B5%D0%B4';
-const query = '%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9';
+// const query = '%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9';
 const apiKey = 'AIzaSyCxzNhFqbAE650eUXWo1k-W9pe4WnVzgIY';
 
 // ! publishedAfter
@@ -58,8 +58,8 @@ async function getYoutubeData(host, search) {
 
       nextPageToken = data.nextPageToken;
       // !
-      // console.log('Next token >>> ', nextPageToken);
-      console.log('Next token >>> ', data);
+      console.log('Next token >>> ', nextPageToken);
+      // console.log('Next token >>> ', data);
 
 
       for (const item of data.items) {
