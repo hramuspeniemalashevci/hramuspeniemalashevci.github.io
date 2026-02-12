@@ -48,7 +48,7 @@ const minutes = d.getMinutes();
 
 // Functions
 export function getDateAsText() {
-  const dateAsString = `${currDate} ${monthsBgNames[currMonthIndex]} ${currYear} г. / ${hours}:${minutes}`;
+  const dateAsString = `${currDate} ${monthsBgNames[currMonthIndex]} ${currYear} г. / ${hours}:${minutes} ч.`;
 
   console.log(dateAsString);
 
