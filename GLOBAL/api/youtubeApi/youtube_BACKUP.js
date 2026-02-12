@@ -89,73 +89,23 @@ async function getYoutubeData(host, search) {
 
 }
 
-async function getNewChannelData() {
-  try {
-    const data_NewChannel = await getYoutubeData(host_2, search_NewChannel);
-    // !
-    console.log('YouTube data - NEW >>>', data_NewChannel);
-    return data_NewChannel;
-
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
-}
-
-async function getOldChannelData() {
-  try {
-    const data_OldChannel = await getYoutubeData(host_2, search_OldChannel);
-    // !
-    console.log('YouTube data - OLD >>>', data_OldChannel);
-    return data_OldChannel;
-
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
-}
-
-async function getCloudlData() {
-  try {
-    const data_Cloud = await getRequest();
-    // !
-    // console.log('Cloud data >>>', data_Cloud.Youtube);
-    return data_Cloud.Youtube;
-
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
-}
-
-
 export async function updateYoutubeData() {
   lastYoutubeUpdateDiv.textContent = `... Данните се синхронизират ...`;
   lastYoutubeUpdateDiv.style.color = 'rgb(218, 67, 67)';
 
   try {
-    // Back4app cloud request
-    const cloudData = await getCloudlData();
-    const cloudUniquePropsObj = setUniqueKeysObject(cloudData);
+    const data_NewChannel = await getYoutubeData(host_2, search_NewChannel);
+    // !
+    console.log('YouTube data - NEW >>>', data_NewChannel);
 
+    const data_OldChannel = await getYoutubeData(host_2, search_OldChannel);
+    // !
+    console.log('YouTube data - OLD >>>', data_OldChannel);
 
-    // Youtube fresh data request
-    const data_NewChannel = await getNewChannelData();
-    const data_OldChannel = await getOldChannelData();
-    const data_YoutubeFinal = data_NewChannel.concat(data_OldChannel);
-
-    // Loop over Youtube fresh final data and fill missing data to cloudData array
-    data_YoutubeFinal.forEach(el => {
-      if (cloudUniquePropsObj.hasOwnProperty(el.videoId) === false) {
-        cloudData.push(el);
-      }
-    });
-
-    // Sort final data
-    const finalSortedData = sortArrByDate(cloudData, 'descending');
+    const data = data_NewChannel.concat(data_OldChannel);
 
     const dataObj = {
-      Youtube: finalSortedData
+      Youtube: data
     };
 
     try {
@@ -181,42 +131,9 @@ export async function updateYoutubeData() {
 
 }
 
-function sortArrByDate(arr, sortType) {
-  // sortType >>> 'ascending' OR 'descending'
-  const mappedArr = arr.map(el => {
-    el.publishTime = new Date(el.publishTime)
-    return el;
-  });
-
-  if (sortType === 'ascending') {
-    return mappedArr.sort((a, b) => {
-      return a.publishTime - b.publishTime;
-    });
-
-  } else if (sortType === 'descending') {
-    return mappedArr.sort((a, b) => {
-      return b.publishTime - a.publishTime;
-    });
-
-  } else {
-    return null;
-  }
-}
-
-function setUniqueKeysObject(arr) {
-  const obj = {};
-
-  for (const el of arr) {
-    obj[el.videoId] = el;
-  }
-
-  return obj;
-}
-
 
 // IMPORTS
 import { getDateAsText } from '../../js-global/date.js';
 // IMPORTS
 import { makeHttpRequest, updateRequest } from "../../js-global/requests.js";
 import { back4appBrowserStorageItemName } from '../back4appApi/back4app.js';
-import { getRequest } from '../../js-global/requests.js';

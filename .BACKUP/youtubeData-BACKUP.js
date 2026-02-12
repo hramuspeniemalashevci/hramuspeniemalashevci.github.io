@@ -3996,10 +3996,13 @@ const youtubeDataBackup_02_12_2026 = [
 ];
 
 // EXECUTION
-console.log(youtubeDataBackup_02_12_2026.length);
+// console.log(youtubeDataBackup_02_12_2026.length);
 
-const sorted = sortArrByDate(youtubeDataBackup_02_12_2026, 'ascending');
-console.log(sorted);
+// const sorted = sortArrByDate(youtubeDataBackup_02_12_2026, 'ascending');
+// console.log(sorted);
+
+console.log(setUniqueKeysObject(youtubeDataBackup_02_12_2026));
+
 
 // FUNCTIONS
 function sortArrByDate(arr, sortType) {
@@ -4022,4 +4025,14 @@ function sortArrByDate(arr, sortType) {
   } else {
     return null;
   }
+}
+
+function setUniqueKeysObject(arr) {
+  const obj = {};
+
+  for (const el of arr) {
+    obj[el.videoId] = el;
+  }
+
+  return obj;
 }
