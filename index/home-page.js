@@ -49,3 +49,4 @@ function showHomePage() {
 // IMPORTS
 import { getRequest } from "../GLOBAL/js-global/requests.js";
 import { elementCreate } from "../GLOBAL/js-global/dom.js";
+import { version } from '../admin/version.js';

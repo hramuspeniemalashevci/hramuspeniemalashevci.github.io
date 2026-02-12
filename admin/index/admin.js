@@ -63,3 +63,4 @@ import * as back4app from "../../GLOBAL/api/back4appApi/back4app.js";
 import { setBrowserStorageItem, browserStorageValidation, removeAllBack4appUsersessionData } from "../../GLOBAL/js-global/browser-storage.js";
 import { getFormData } from "../../GLOBAL/js-global/forms.js";
 import { loginRequest } from "../../GLOBAL/js-global/requests-users.js";
+import { version } from '../version.js';

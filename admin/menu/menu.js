@@ -67,3 +67,4 @@ import { browserStorageValidation } from "../../GLOBAL/js-global/browser-storage
 import { getRequest } from '../../GLOBAL/js-global/requests.js';
 import { logoutAllUserSessions } from '../../GLOBAL/js-global/requests-users.js';
 import { updateYoutubeData } from '../../GLOBAL/api/youtubeApi/youtube.js';
+import { version } from '../version.js';
