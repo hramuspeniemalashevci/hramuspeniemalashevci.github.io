@@ -34,7 +34,7 @@ async function updatingLastYoutubeUpdateDate() {
     console.log(sentData);
 
     lastYoutubeUpdateDiv.style.color = 'initial';
-    lastYoutubeUpdateDiv.textContent = `(Последно обновяване: ${currentDate})`;
+    lastYoutubeUpdateDiv.textContent = `${currentDate}`;
 
   } catch (error) {
     console.log(error);

@@ -79,12 +79,17 @@ a.edit:active {
 #youtube-sync-btn {
     border: 2px solid blue;
     color: blue;
+    display: inline-block;
+    margin-top: 25px;
 }
 
-.last-youtube-update {
+article.last-youtube-update {
+    margin-top: 10px;
+}
+
+div.last-youtube-update {
     color: rgb(218, 67, 67);
     font-style: italic;
-    font-size: 90%;
 }
 
 #logout-btn {
@@ -93,10 +98,28 @@ a.edit:active {
 }
 
 footer {
+    background-color: rgb(245, 245, 245);
     border-top: 1px solid black;
-    margin-top: 40px;
+    margin-top: 50px;
     padding: 10px 25px;
     text-align: center;
     position: sticky;
     top: 100vh;
+}
+
+.youtube-link {
+    /* font-size: 90%; */
+    font-weight: bold;
+}
+
+article.sample-text {
+    margin-top: 50px;
+}
+
+section.youtube {
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 0 auto;
+    width: fit-content;
 }

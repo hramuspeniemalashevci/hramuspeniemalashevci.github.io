@@ -45,7 +45,7 @@ async function getLastYoutubeUpdate() {
   const data = await getRequest();
 
   lastYoutubeUpdateDiv.style.color = 'initial';
-  lastYoutubeUpdateDiv.textContent = `(Последно обновяване: ${data.YouTubeLastUpdate})`;
+  lastYoutubeUpdateDiv.textContent = `${data.YouTubeLastUpdate}`;
 }
 
 async function onYoutubeSyncClick() {
