@@ -32,8 +32,12 @@ export async function updateRequest(bodyObj) {
   } catch (error) {
     console.log(error);
 
-    alert('Изтекла потребителска сесия ...\nМоля, попълнете потребителските си данни отново ...');
+    alert('Изтекла потребителска сесия! Моля, опитайте отново ...');
+    removeBrowserStorageItem(back4app.back4appBrowserStorageItemName, 'session');
+    removeBrowserStorageItem(back4app.back4appBrowserStorageItemName, 'local');
 
+    // location.reload();
+    window.location.replace('/admin');
     throw error;
   }
 
@@ -78,5 +82,6 @@ export async function makeHttpRequest(url, methodStr, headersObj, bodyObj) {
 }
 
 // IMPORTS
-import * as back4app from "../api/back4appApi/back4app.js"; import { getUserSessionToken } from './browser-storage.js';
+import * as back4app from "../api/back4appApi/back4app.js";
+import { getUserSessionToken, removeBrowserStorageItem } from './browser-storage.js';
 
