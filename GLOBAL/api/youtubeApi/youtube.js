@@ -133,6 +133,8 @@ export async function updateYoutubeData() {
   lastYoutubeUpdateDiv.textContent = `... Данните се синхронизират ...`;
   lastYoutubeUpdateDiv.style.color = 'rgb(218, 67, 67)';
 
+  let counterNewVideosInsertions = 0;
+
   try {
     // Back4app cloud request
     const cloudData = await getCloudlData();
@@ -148,6 +150,7 @@ export async function updateYoutubeData() {
     data_YoutubeFinal.forEach(el => {
       if (cloudUniquePropsObj.hasOwnProperty(el.videoId) === false) {
         cloudData.push(el);
+        counterNewVideosInsertions++;
       }
     });
 
@@ -163,7 +166,7 @@ export async function updateYoutubeData() {
       // console.log(sentData);
 
       await updatingLastYoutubeUpdateDate();
-      alert('... Данните са синхронизирани ...');
+      alert(`... Данните са синхронизирани ...\nДобавени нови видеа (брой): ${counterNewVideosInsertions}\nНалични видеа (брой): ${cloudData.length}`);
 
     } catch (error) {
       console.log(error);

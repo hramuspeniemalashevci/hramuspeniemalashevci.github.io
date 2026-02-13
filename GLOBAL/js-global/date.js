@@ -43,8 +43,8 @@ const currMonthIndex = d.getMonth();
 const currMonthEngName = monthsArr[currMonthIndex];
 const currDate = d.getDate();
 
-const hours = d.getHours();
-const minutes = d.getMinutes();
+const hours = d.getHours().toString().padStart(2, '0');
+const minutes = d.getMinutes().toString().padStart(2, '0');
 
 // Functions
 export function getDateAsText() {
