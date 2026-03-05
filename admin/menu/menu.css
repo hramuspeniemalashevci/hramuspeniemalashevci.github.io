@@ -92,6 +92,12 @@ div.last-youtube-update {
     font-style: italic;
 }
 
+div.logout {
+    /* border: 2px solid red; */
+    text-align: center;
+    margin: 40px 0;
+}
+
 #logout-btn {
     border: 2px solid red;
     color: red;

@@ -20,8 +20,8 @@
 
     <header class="top-btns-group">
         <div class="btns-group -top">
-            <button id="logout-top-btn">Изход</button>
             <a id="bottom-link" class="link-btn" href="/admin/menu">Меню</a>
+            <button id="logout-top-btn">Изход</button>
             <br>
             <a id="top-link" href="/schedule">[ Богослужения през седмицата ]</a>
         </div>
@@ -30,8 +30,7 @@
     <section id="articles-section">
 
 
-        <h1>Редактиране на списъка с богослуженията за седмицата</h1>
-
+        <h1>Седмичен богослужебен график<br>(редактиране)</h1>
 
         <fieldset id="first-weekday-div">
 
@@ -162,8 +161,8 @@
 
             <article id="next-mon-article" class="card">
                 <label for="next-mon-textarea">
-                    <h4 class="weekday-title">Дата (от следващата седмица): <span
-                            class="full-date-span">##/##/####</span> г. (<span class="weekday-span">#######</span>)
+                    <h4 class="weekday-title">Дата на първия ден от следващата седмица:<br>
+                        <span class="full-date-span">##/##/####</span> г. (<span class="weekday-span">#######</span>)
                     </h4>
                 </label>
 
@@ -179,9 +178,9 @@
 
         <footer>
             <div class="btns-group -bottom">
-                <button id="logout-bottom-btn">Изход</button>
-                <button id="preview-btn">Преглед</button>
                 <a id="bottom-link" class="link-btn" href="/admin/menu">Меню</a>
+                <button id="preview-btn">Преглед</button>
+                <button id="logout-bottom-btn">Изход</button>
                 <br>
                 <a id="bottom-link" href="/schedule">[ Богослужения през седмицата ]</a>
             </div>
@@ -201,7 +200,7 @@
                     placeholder="... ВЪВЕДЕТЕ ТЕКСТ ...">
             </textarea>
                 <button id="template-reset" class="btn-template" type="reset">Изчистване на шаблона</button>
-                <button id="template-update" class="btn-template" type="submit">Обновяване на шаблона</button>
+                <button id="template-update" class="btn-template" type="submit">Запаметяване на шаблона</button>
             </form>
         </div>
 
@@ -224,7 +223,7 @@
     </section>
 
     <footer class="page-footer" id="footer-index">
-        <a href="#">успение-на-пресвета-богородица.бг</a>
+        <a href="/" target="_blank">успение-на-пресвета-богородица.бг</a>
     </footer>
 
     <script src="./schedule.js" type="module"></script>
