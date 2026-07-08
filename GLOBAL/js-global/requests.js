@@ -68,15 +68,6 @@ export async function makeHttpRequest(url, methodStr, headersObj, bodyObj) {
     return data;
 
   } catch (error) {
-
-    if (error.error) {
-      const errorObj = error.error;
-      console.log('YouTube >>> ', errorObj.code, errorObj.message);
-
-    } else {
-      console.log(error);
-    }
-
     throw error;
   }
 }

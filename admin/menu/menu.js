@@ -54,15 +54,7 @@ async function onYoutubeSyncClick() {
     await updateYoutubeData();
 
   } catch (error) {
-    if (error.error) {
-      const errorObj = error.error;
-      console.log(errorObj.code, errorObj.message);
-
-    } else {
-      console.log(error);
-      throw error;
-    }
-
+    throw error;
   }
 }
 

@@ -49,8 +49,5 @@ const minutes = d.getMinutes().toString().padStart(2, '0');
 // Functions
 export function getDateAsText() {
   const dateAsString = `${currDate} ${monthsBgNames[currMonthIndex]} ${currYear} г. / ${hours}:${minutes} ч.`;
-
-  console.log(dateAsString);
-
   return dateAsString;
 }

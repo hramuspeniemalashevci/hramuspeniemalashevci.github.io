@@ -1,13 +1,24 @@
-const host = 'https://youtube.googleapis.com/youtube/v3/search';
-const host_2 = 'https://www.googleapis.com/youtube/v3/search';
+const hosts = [
+  'https://youtube.googleapis.com/youtube/v3/search',
+  'https://www.googleapis.com/youtube/v3/search'
+];
+const queries = [
+  '%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7Cmp4',
+  '%D1%81%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7C%D0%BF%D1%80%D0%BE%D0%BF%D0%BE%D0%B2%D0%B5%D0%B4',
+  '%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9'
+];
+const apiKeys = [
+  'AIzaSyCxzNhFqbAE650eUXWo1k-W9pe4WnVzgIY',
+  'AIzaSyAcAar2-11JPi8NcfjgMn0w7gnJUdeyCsU',
+  'AIzaSyAZcY1abBw3emPWEFzuoEwwgfUbAuRUsuw'
+];
+
+const host = hosts[1];
 const channelId_NewChannel = 'UC2BiSiWSIhEQZ_lxiSuTWpw';
 const channelId_OldChannel = 'UCS3ImmFAklu-KGOi7-Yn5EQ';
-
 const maxResults = '50';
-const query = '%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7Cmp4';
-// const query = '%D1%81%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7C%D0%BF%D1%80%D0%BE%D0%BF%D0%BE%D0%B2%D0%B5%D0%B4';
-// const query = '%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9';
-const apiKey = 'AIzaSyCxzNhFqbAE650eUXWo1k-W9pe4WnVzgIY';
+const query = queries[0];
+const apiKey = apiKeys[2];
 
 // ! publishedAfter
 // ! publisheBefore
@@ -31,7 +42,7 @@ async function updatingLastYoutubeUpdateDate() {
 
   try {
     const sentData = await updateRequest(dataObj);
-    console.log(sentData);
+    // console.log(sentData);
 
     lastYoutubeUpdateDiv.style.color = 'initial';
     lastYoutubeUpdateDiv.textContent = `${currentDate}`;
@@ -77,40 +88,53 @@ async function getYoutubeData(host, search) {
     return result;
 
   } catch (error) {
-    const errorObj = error.error;
-    console.log(errorObj.code, errorObj.message);
+    // const errorObj = error.error;
+    // console.log(errorObj.code, errorObj.message);
 
-
-    alert('Грешка при получаването на YouTube данните!');
+    // alert('Грешка при получаването на YouTube данните!');
     // ?
     throw error;
-    // return null;
   }
 
 }
 
 async function getNewChannelData() {
   try {
-    const data_NewChannel = await getYoutubeData(host_2, search_NewChannel);
+    const data_NewChannel = await getYoutubeData(host, search_NewChannel);
     // !
     console.log('YouTube data - NEW >>>', data_NewChannel);
     return data_NewChannel;
 
   } catch (error) {
-    console.log(error);
+    console.log('New channel:');
+
+    if (error.error.code == 403) {
+      console.log('!!! 403 !!!');
+      await getNewChannelData(host, search_NewChannel);
+      return;
+    }
+
     throw error;
   }
 }
 
-async function getOldChannelData() {
+async function getOldChannelManualData() {
   try {
-    const data_OldChannel = await getYoutubeData(host_2, search_OldChannel);
+    const data_OldChannel = await getYoutubeData(host, search_OldChannel);
     // !
     console.log('YouTube data - OLD >>>', data_OldChannel);
     return data_OldChannel;
 
   } catch (error) {
-    console.log(error);
+    console.log('Old channel:');
+    // console.log(error);
+
+    if (error.error.code === 403) {
+      console.log('!!! 403 !!!');
+      await getOldChannelManualData(host, search_OldChannel);
+      return;
+    }
+
     throw error;
   }
 }
@@ -140,10 +164,14 @@ export async function updateYoutubeData() {
     const cloudData = await getCloudlData();
     const cloudUniquePropsObj = setUniqueKeysObject(cloudData);
 
+    //  Manual data
+    // const data_NewChannel = newChannelManualData;
+    // const data_OldChannel = oldChannelManualData;
 
     // Youtube fresh data request
     const data_NewChannel = await getNewChannelData();
     const data_OldChannel = await getOldChannelData();
+
     const data_YoutubeFinal = data_NewChannel.concat(data_OldChannel);
 
     // Loop over Youtube fresh final data and fill missing data to cloudData array
@@ -223,3 +251,5 @@ import { getDateAsText } from '../../js-global/date.js';
 import { makeHttpRequest, updateRequest } from "../../js-global/requests.js";
 import { back4appBrowserStorageItemName } from '../back4appApi/back4app.js';
 import { getRequest } from '../../js-global/requests.js';
+import { default as newChannelManualData } from "../youtube-manual-data/newData-manualData.js";
+import { default as oldChannelManualData } from "../youtube-manual-data/oldData-manualData.js";
