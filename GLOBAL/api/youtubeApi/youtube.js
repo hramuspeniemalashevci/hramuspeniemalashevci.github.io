@@ -118,7 +118,7 @@ async function getNewChannelData() {
   }
 }
 
-async function getOldChannelManualData() {
+async function getOldChannelData() {
   try {
     const data_OldChannel = await getYoutubeData(host, search_OldChannel);
     // !
@@ -131,7 +131,7 @@ async function getOldChannelManualData() {
 
     if (error.error.code === 403) {
       console.log('!!! 403 !!!');
-      await getOldChannelManualData(host, search_OldChannel);
+      await getOldChannelData(host, search_OldChannel);
       return;
     }
 
@@ -165,12 +165,12 @@ export async function updateYoutubeData() {
     const cloudUniquePropsObj = setUniqueKeysObject(cloudData);
 
     //  Manual data
-    // const data_NewChannel = newChannelManualData;
-    // const data_OldChannel = oldChannelManualData;
+    const data_NewChannel = newChannelManualData;
+    const data_OldChannel = oldChannelManualData;
 
     // Youtube fresh data request
-    const data_NewChannel = await getNewChannelData();
-    const data_OldChannel = await getOldChannelData();
+    // const data_NewChannel = await getNewChannelData();
+    // const data_OldChannel = await getOldChannelData();
 
     const data_YoutubeFinal = data_NewChannel.concat(data_OldChannel);
 
