@@ -7,59 +7,66 @@ const queries = [
   '%D1%81%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7C%D0%BF%D1%80%D0%BE%D0%BF%D0%BE%D0%B2%D0%B5%D0%B4',
   '%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9'
 ];
+
+// TODO Hide api keys / Get api keys from Back4app
 const apiKeys = [
   'AIzaSyCxzNhFqbAE650eUXWo1k-W9pe4WnVzgIY',
   'AIzaSyAcAar2-11JPi8NcfjgMn0w7gnJUdeyCsU',
-  'AIzaSyAZcY1abBw3emPWEFzuoEwwgfUbAuRUsuw'
+  'AIzaSyAZcY1abBw3emPWEFzuoEwwgfUbAuRUsuw',
+  'AIzaSyD6E_bTF4qvBn3dLMhf57tr8EaqaYl9n_s'
 ];
 
 const host = hosts[1];
 const channelId_NewChannel = 'UC2BiSiWSIhEQZ_lxiSuTWpw';
 const channelId_OldChannel = 'UCS3ImmFAklu-KGOi7-Yn5EQ';
-const maxResults = '50';
+const maxResults = '25';
+const publishedBefore = getDate_n_DaysBeforeAsRFC339(1);
 const query = queries[0];
-const apiKey = apiKeys[2];
+const apiKey = apiKeys[1];
 
-// ! publishedAfter
-// ! publisheBefore
-// ! The value is an RFC 3339 formatted date-time value (1970-01-01T00:00:00Z).
+const search_NewChannel = `?part=snippet&channelId=${channelId_NewChannel}&maxResults=${maxResults}&publishedBefore=${publishedBefore}&order=date&q=${query}&type=video&key=${apiKey}&pageToken=`;
+const search_OldChannel = `?part=snippet&channelId=${channelId_OldChannel}&maxResults=${maxResults}&publishedBefore=${publishedBefore}&order=date&q=${query}&type=video&key=${apiKey}&pageToken=`;
 
-const search_NewChannel = `?part=snippet&channelId=${channelId_NewChannel}&maxResults=${maxResults}&order=date&q=${query}&type=video&key=${apiKey}&pageToken=`;
-const search_OldChannel = `?part=snippet&channelId=${channelId_OldChannel}&maxResults=${maxResults}&order=date&q=${query}&type=video&key=${apiKey}&pageToken=`;
-
-// ex. Query string: 'search?part=snippet&channelId=UCS3ImmFAklu-KGOi7-Yn5EQ&maxResults=100&order=date&q=%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7Cmp4&type=video&key=AIzaSyCxzNhFqbAE650eUXWo1k-W9pe4WnVzgIY&pageToken='
+// * ex. Query string: 's?part=snippet&channelId=UCS3ImmFAklu-KGOi7-Yn5EQ&maxResults=50&publishedBefore=2026-07-10T18:56:02.742Z&order=date&q=%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7Cmp4&type=video&key=AIzaSyCxzNhFqbAE650eUXWo1k-W9pe4WnVzgIY&pageToken='
 
 // Refs
 const lastYoutubeUpdateDiv = document.querySelector('#last-youtube-update');
 
 // FUNCTIONS
-async function updatingLastYoutubeUpdateDate() {
-
-  const currentDate = getDateAsText();
-  const dataObj = {
-    'YouTubeLastUpdate': currentDate
-  };
-
+async function getNewChannelData() {
   try {
-    const sentData = await updateRequest(dataObj);
-    // console.log(sentData);
-
-    lastYoutubeUpdateDiv.style.color = 'initial';
-    lastYoutubeUpdateDiv.textContent = `${currentDate}`;
+    const data_NewChannel = await getYoutubeData(host, search_NewChannel);
+    // !
+    console.log('YouTube data - NEW channel >>>', data_NewChannel);
+    return data_NewChannel;
 
   } catch (error) {
-    console.log(error);
-
-    alert('Date updating failed!');
+    console.log('New channel request error:');
+    throw error;
   }
 }
 
+async function getOldChannelData() {
+  try {
+    const data_OldChannel = await getYoutubeData(host, search_OldChannel);
+    // !
+    console.log('YouTube data - OLD channel >>>', data_OldChannel);
+    return data_OldChannel;
+
+  } catch (error) {
+    console.log('Old channel request error:');
+    throw error;
+  }
+}
+
+
 async function getYoutubeData(host, search) {
   // ! Dummy data
-  // return dummyYoutubeData;
+  // ! return dummyYoutubeData;
 
   let nextPageToken = '';
   const result = [];
+  // let counter_onRequesterror = 0;
 
 
   try {
@@ -67,7 +74,10 @@ async function getYoutubeData(host, search) {
 
       const data = await makeHttpRequest(host + search + nextPageToken, 'GET');
 
-      nextPageToken = data.nextPageToken;
+      if (data) {
+        nextPageToken = data.nextPageToken;
+      }
+
       // !
       console.log('Next token >>> ', nextPageToken);
       // console.log('Next token >>> ', data);
@@ -88,55 +98,14 @@ async function getYoutubeData(host, search) {
     return result;
 
   } catch (error) {
-    // const errorObj = error.error;
-    // console.log(errorObj.code, errorObj.message);
+    console.log(error);
+    const errorCode = error.error.code;
+    console.log('Error code >>> ', errorCode);
 
     // alert('Грешка при получаването на YouTube данните!');
-    // ?
     throw error;
   }
 
-}
-
-async function getNewChannelData() {
-  try {
-    const data_NewChannel = await getYoutubeData(host, search_NewChannel);
-    // !
-    console.log('YouTube data - NEW >>>', data_NewChannel);
-    return data_NewChannel;
-
-  } catch (error) {
-    console.log('New channel:');
-
-    if (error.error.code == 403) {
-      console.log('!!! 403 !!!');
-      await getNewChannelData(host, search_NewChannel);
-      return;
-    }
-
-    throw error;
-  }
-}
-
-async function getOldChannelData() {
-  try {
-    const data_OldChannel = await getYoutubeData(host, search_OldChannel);
-    // !
-    console.log('YouTube data - OLD >>>', data_OldChannel);
-    return data_OldChannel;
-
-  } catch (error) {
-    console.log('Old channel:');
-    // console.log(error);
-
-    if (error.error.code === 403) {
-      console.log('!!! 403 !!!');
-      await getOldChannelData(host, search_OldChannel);
-      return;
-    }
-
-    throw error;
-  }
 }
 
 async function getCloudlData() {
@@ -164,13 +133,13 @@ export async function updateYoutubeData() {
     const cloudData = await getCloudlData();
     const cloudUniquePropsObj = setUniqueKeysObject(cloudData);
 
-    //  Manual data
-    const data_NewChannel = newChannelManualData;
-    const data_OldChannel = oldChannelManualData;
+    // *  Manual data
+    // const data_NewChannel = newChannelManualData;
+    // const data_OldChannel = oldChannelManualData;
 
-    // Youtube fresh data request
-    // const data_NewChannel = await getNewChannelData();
-    // const data_OldChannel = await getOldChannelData();
+    // * Youtube fresh data request
+    const data_NewChannel = await getNewChannelData();
+    const data_OldChannel = await getOldChannelData();
 
     const data_YoutubeFinal = data_NewChannel.concat(data_OldChannel);
 
@@ -212,6 +181,37 @@ export async function updateYoutubeData() {
 
 }
 
+async function updatingLastYoutubeUpdateDate() {
+
+  const currentDate = getDateAsText();
+  const dataObj = {
+    'YouTubeLastUpdate': currentDate
+  };
+
+  try {
+    const sentData = await updateRequest(dataObj);
+    // console.log(sentData);
+
+    lastYoutubeUpdateDiv.style.color = 'initial';
+    lastYoutubeUpdateDiv.textContent = `${currentDate}`;
+
+  } catch (error) {
+    console.log(error);
+
+    alert('Date updating failed!');
+    throw error;
+  }
+}
+
+// Helper FUNCTIONS
+function getDate_n_DaysBeforeAsRFC339(numberOfDaysBefore) {
+  const todayDate = new Date()
+  todayDate.setDate(todayDate.getDate() - numberOfDaysBefore)
+  const rfc339 = todayDate.toISOString();
+  console.log(rfc339);
+  return rfc339;
+}
+
 function sortArrByDate(arr, sortType) {
   // sortType >>> 'ascending' OR 'descending'
   const mappedArr = arr.map(el => {
@@ -251,5 +251,5 @@ import { getDateAsText } from '../../js-global/date.js';
 import { makeHttpRequest, updateRequest } from "../../js-global/requests.js";
 import { back4appBrowserStorageItemName } from '../back4appApi/back4app.js';
 import { getRequest } from '../../js-global/requests.js';
-import { default as newChannelManualData } from "../youtube-manual-data/newData-manualData.js";
-import { default as oldChannelManualData } from "../youtube-manual-data/oldData-manualData.js";
+import { default as newChannelManualData } from "./newYoutubeChannel_staticData.js";
+import { default as oldChannelManualData } from "./oldYoutubeChannel_staticData.js";

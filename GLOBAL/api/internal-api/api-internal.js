@@ -2,14 +2,10 @@ const endpoints = {
     prophets: '/GLOBAL/assets/data-static/data-prophet.json',
 };
 
-
-
-
 export async function getProphetStaticData() {
     return get(endpoints.prophets);
     // videoId, title, description, thumbnail, publishTime
 }
-
 
 async function get(url) {
     try {
