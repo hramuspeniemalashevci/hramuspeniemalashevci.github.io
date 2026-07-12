@@ -20,12 +20,12 @@ const host = hosts[1];
 const channelId_NewChannel = 'UC2BiSiWSIhEQZ_lxiSuTWpw';
 const channelId_OldChannel = 'UCS3ImmFAklu-KGOi7-Yn5EQ';
 const maxResults = '25';
-const publishedBefore = getDate_n_DaysBeforeAsRFC339(1);
+const publishedAfter = getDate_n_DaysBeforeAsRFC339(10);
 const query = queries[0];
 const apiKey = apiKeys[1];
 
-const search_NewChannel = `?part=snippet&channelId=${channelId_NewChannel}&maxResults=${maxResults}&publishedBefore=${publishedBefore}&order=date&q=${query}&type=video&key=${apiKey}&pageToken=`;
-const search_OldChannel = `?part=snippet&channelId=${channelId_OldChannel}&maxResults=${maxResults}&publishedBefore=${publishedBefore}&order=date&q=${query}&type=video&key=${apiKey}&pageToken=`;
+const search_NewChannel = `?part=snippet&channelId=${channelId_NewChannel}&maxResults=${maxResults}&publishedAfter=${publishedAfter}&order=date&q=${query}&type=video&key=${apiKey}&pageToken=`;
+const search_OldChannel = `?part=snippet&channelId=${channelId_OldChannel}&maxResults=${maxResults}&publishedAfter=${publishedAfter}&order=date&q=${query}&type=video&key=${apiKey}&pageToken=`;
 
 // * ex. Query string: 's?part=snippet&channelId=UCS3ImmFAklu-KGOi7-Yn5EQ&maxResults=50&publishedBefore=2026-07-10T18:56:02.742Z&order=date&q=%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%7Cmp4&type=video&key=AIzaSyCxzNhFqbAE650eUXWo1k-W9pe4WnVzgIY&pageToken='
 
@@ -139,9 +139,12 @@ export async function updateYoutubeData() {
 
     // * Youtube fresh data request
     const data_NewChannel = await getNewChannelData();
-    const data_OldChannel = await getOldChannelData();
+    // ! Temporary excluded
+    // const data_OldChannel = await getOldChannelData();
 
-    const data_YoutubeFinal = data_NewChannel.concat(data_OldChannel);
+    // ! Temporary excluded
+    // const data_YoutubeFinal = data_NewChannel.concat(data_OldChannel);
+    const data_YoutubeFinal = data_NewChannel;
 
     // Loop over Youtube fresh final data and fill missing data to cloudData array
     data_YoutubeFinal.forEach(el => {
