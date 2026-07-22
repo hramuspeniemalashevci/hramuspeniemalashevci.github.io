@@ -13,6 +13,36 @@ export const info = {
     objectId: 'PH5fAz3B0C',
 };
 
+export const infoYoutubeApi = {
+    host: 'https://parseapi.back4app.com',
+    headers: {
+        'X-Parse-Application-Id': 'qfnjFeXrdVN5ZBKiCTorInh3D4YQki5zxqZWCCsd',
+        'X-Parse-REST-API-Key': 'vgkdkHkymgE5vM8otldRwBtPkxPkE1WWVRbNykxK',
+        'Content-Type': 'application/json'
+    },
+    className: 'YoutubeApiClass',
+    objectId: '5lGsCgkkCA',
+};
+
+export const endpointsYoutubeApi = {
+    crud: `${infoYoutubeApi.host}/classes/${infoYoutubeApi.className}/${infoYoutubeApi.objectId}`, // GET, PUT
+    users: {
+        signUp: `${info.host}/users`, // POST
+        logIn: `${info.host}/login`, // POST
+
+        verifyEmail: `${infoYoutubeApi.host}/verificationEmailRequest`, // POST
+        passwordReset: `${infoYoutubeApi.host}/requestPasswordReset`, // POST
+        retrieveCurrentUser: `${infoYoutubeApi.host}/users/me`, // GET
+        readingUsers: `${infoYoutubeApi.host}/users/myCurrentUserId`, // GET
+
+        update: `${infoYoutubeApi.host}/users/MyUserObjectId`, // PUT
+        delete: `${infoYoutubeApi.host}/users/MyUserObjectId`, // DELETE
+        logout: `${infoYoutubeApi.host}/logout`, // POST
+    },
+    session: `${infoYoutubeApi.host}/classes/_Session` // GET
+};
+
+
 const usersInfo = {
     signUp: {
         headers: {

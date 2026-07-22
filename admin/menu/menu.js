@@ -20,7 +20,8 @@ scheduleEditBtn.addEventListener('click', onScheduleEditClick);
 youtubeSyncBtn.addEventListener('click', onYoutubeSyncClick);
 logoutBtn.addEventListener('click', () => logoutAllUserSessions());
 
-window.onload = onPageLoad;
+// window.onload = onPageLoad;
+onPageLoad();
 
 // FUNCTIONS
 // Event-Handlers
@@ -43,9 +44,24 @@ function onScheduleEditClick() {
 
 async function getLastYoutubeUpdate() {
   const data = await getRequest();
+  const dateObj = data.YoutubeLastUpdateObject;
+
+  const nowObj = new Date();
+  const lastUpdateDateObj = dateObj.DateObject;
+  const lastUpdateDateString = dateObj.YouTubeLastUpdate;
+
+  // One day in milliseconds
+  const oneDay = 1000 * 60 * 60 * 24;
+
+  // Calculating the time difference between two dates
+  // const diffInTime = date2.getTime() - date1.getTime();
+  const diffInTime = nowObj - new Date(lastUpdateDateObj);
+
+  // Calculating the no. of days between two dates
+  const diffInDays = Math.round(diffInTime / oneDay);
 
   lastYoutubeUpdateDiv.style.color = 'initial';
-  lastYoutubeUpdateDiv.textContent = `${data.YouTubeLastUpdate}`;
+  lastYoutubeUpdateDiv.textContent = `${lastUpdateDateString} (преди ${diffInDays} дни)`;
 }
 
 async function onYoutubeSyncClick() {

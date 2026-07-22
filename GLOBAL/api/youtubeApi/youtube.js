@@ -9,20 +9,27 @@ const queries = [
 ];
 
 // TODO Hide api keys / Get api keys from Back4app
-const apiKeys = [
-  'AIzaSyCxzNhFqbAE650eUXWo1k-W9pe4WnVzgIY',
-  'AIzaSyAcAar2-11JPi8NcfjgMn0w7gnJUdeyCsU',
-  'AIzaSyAZcY1abBw3emPWEFzuoEwwgfUbAuRUsuw',
-  'AIzaSyD6E_bTF4qvBn3dLMhf57tr8EaqaYl9n_s'
-];
 
 const host = hosts[1];
 const channelId_NewChannel = 'UC2BiSiWSIhEQZ_lxiSuTWpw';
 const channelId_OldChannel = 'UCS3ImmFAklu-KGOi7-Yn5EQ';
-const maxResults = '25';
+const maxResults = '50';
+
+/*
+console.log(daysCountFromLastYoutubeSync);
+const daysBefore = (function () {
+  const numberOfDaysBefore = Number(prompt('Брой на дните назад в миналото, откогато да се търси за ново видео съдържание?\nМоля, въведете число ...'));
+  console.log('numberOfDaysBefore >>> ', numberOfDaysBefore);
+  return numberOfDaysBefore;
+})();
+const publishedAfter = getDate_n_DaysBeforeAsRFC339(daysBefore);
+*/
+
 const publishedAfter = getDate_n_DaysBeforeAsRFC339(10);
 const query = queries[0];
-const apiKey = apiKeys[1];
+
+const youtubeApiData = await getYoutubeApiRequest();
+const apiKey = youtubeApiData.ApiKeys[1];
 
 const search_NewChannel = `?part=snippet&channelId=${channelId_NewChannel}&maxResults=${maxResults}&publishedAfter=${publishedAfter}&order=date&q=${query}&type=video&key=${apiKey}&pageToken=`;
 const search_OldChannel = `?part=snippet&channelId=${channelId_OldChannel}&maxResults=${maxResults}&publishedAfter=${publishedAfter}&order=date&q=${query}&type=video&key=${apiKey}&pageToken=`;
@@ -188,15 +195,17 @@ async function updatingLastYoutubeUpdateDate() {
 
   const currentDate = getDateAsText();
   const dataObj = {
-    'YouTubeLastUpdate': currentDate
+    'YoutubeLastUpdateObject': {
+      'YouTubeLastUpdate': currentDate.dateAsString,
+      'DateObject': currentDate.dateObj
+    }
   };
 
   try {
     const sentData = await updateRequest(dataObj);
-    // console.log(sentData);
 
     lastYoutubeUpdateDiv.style.color = 'initial';
-    lastYoutubeUpdateDiv.textContent = `${currentDate}`;
+    lastYoutubeUpdateDiv.textContent = `${currentDate.dateAsString}`;
 
   } catch (error) {
     console.log(error);
@@ -209,9 +218,9 @@ async function updatingLastYoutubeUpdateDate() {
 // Helper FUNCTIONS
 function getDate_n_DaysBeforeAsRFC339(numberOfDaysBefore) {
   const todayDate = new Date()
-  todayDate.setDate(todayDate.getDate() - numberOfDaysBefore)
+  todayDate.setDate(todayDate.getDate() - numberOfDaysBefore);
   const rfc339 = todayDate.toISOString();
-  console.log(rfc339);
+  // console.log(rfc339);
   return rfc339;
 }
 
@@ -247,11 +256,13 @@ function setUniqueKeysObject(arr) {
   return obj;
 }
 
+// await getYoutubeApiRequest();
+
 
 // IMPORTS
 import { getDateAsText } from '../../js-global/date.js';
 // IMPORTS
-import { makeHttpRequest, updateRequest } from "../../js-global/requests.js";
+import { makeHttpRequest, updateRequest, getYoutubeApiRequest } from "../../js-global/requests.js";
 import { back4appBrowserStorageItemName } from '../back4appApi/back4app.js';
 import { getRequest } from '../../js-global/requests.js';
 import { default as newChannelManualData } from "./newYoutubeChannel_staticData.js";

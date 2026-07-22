@@ -43,6 +43,34 @@ export async function updateRequest(bodyObj) {
 
 }
 
+export async function getYoutubeApiRequest() {
+  const url = back4app.endpointsYoutubeApi.crud;
+  const headers = back4app.infoYoutubeApi.headers;
+
+  const browserStorageItemName = back4app.back4appBrowserStorageItemName;
+  headers['X-Parse-Session-Token'] = getUserSessionToken(browserStorageItemName);
+
+  try {
+    const data = await makeHttpRequest(url, 'GET', headers);
+
+    // console.log(data);
+
+    return data;
+
+  } catch (error) {
+    console.log(error);
+
+    alert('Изтекла потребителска сесия! Моля, опитайте отново ...');
+    removeBrowserStorageItem(back4app.back4appBrowserStorageItemName, 'session');
+    removeBrowserStorageItem(back4app.back4appBrowserStorageItemName, 'local');
+
+    // location.reload();
+    window.location.replace('/admin');
+    throw error;
+  }
+
+}
+
 
 // General requests
 export async function makeHttpRequest(url, methodStr, headersObj, bodyObj) {
